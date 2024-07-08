@@ -1,0 +1,21 @@
+
+input DataBundlesNetworkInput{
+  appId: String
+}
+
+type DataBundlesNetworkResult {
+  success: Boolean!
+  message: String
+  cellc: [BundleNetwork]!
+  mtn: [BundleNetwork]!
+  telkom: [BundleNetwork]!
+  vodacom: [BundleNetwork]!
+  cconnect: [BundleNetwork]!
+}
+
+type BundleNetwork {
+    category: String!
+    desc: String!
+    amount: String!
+    code: Int!
+}

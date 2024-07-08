@@ -1,0 +1,10 @@
+input VerifyStockReceivedInput {
+  barcode: String!
+  appId:String
+}
+
+type VerifyStockReceivedResult {
+  success: Boolean!
+  message: String!
+
+}

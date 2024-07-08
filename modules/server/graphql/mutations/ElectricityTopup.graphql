@@ -1,0 +1,12 @@
+input ElectricityTopupInput {
+  amount: String!
+  meterNumber: String!
+  cellNumber: String!
+  appId:String
+}
+
+type ElectricityTopupResult {
+  success: Boolean!
+  message: String!
+}
+

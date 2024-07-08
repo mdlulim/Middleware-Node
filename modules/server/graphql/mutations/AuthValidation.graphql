@@ -1,0 +1,15 @@
+input AuthValidationInput {
+  username: String!
+  password: String!
+  appId:String
+  currentStatus: Int
+  clientMutationId: String
+}
+
+type AuthValidationPayload {
+  authorized: Boolean!
+  token: String
+  status: Int!
+  profile: Profile
+  clientMutationId: String
+}

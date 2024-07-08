@@ -1,0 +1,12 @@
+input DataTopupInput {
+  code: Int!
+  phoneNumber: String!
+  network: String!
+  reference: String!
+  appId:String
+}
+
+type DataTopupResult {
+  success: Boolean!
+  message: String
+}

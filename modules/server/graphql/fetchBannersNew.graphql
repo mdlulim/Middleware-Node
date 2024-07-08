@@ -1,0 +1,19 @@
+
+input BannerNewInput{
+    appId: String
+}
+
+type Banner {
+    id: ID!
+    url: String!
+}
+
+type BannerEdge {
+    node: Banner!
+    cursor: String!
+}
+
+type BannersResult {
+total: Int!
+edges: [BannerEdge!]
+}

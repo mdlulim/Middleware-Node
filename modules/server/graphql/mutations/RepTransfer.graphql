@@ -1,0 +1,14 @@
+input RepTransferInput {
+  transfer: [ProductTransfer!]!
+  appId:String
+}
+
+input ProductTransfer {
+    product_id: String!
+    qty: String!
+}
+
+type RepTransferResult {
+  success: Boolean!
+  message: String!
+}

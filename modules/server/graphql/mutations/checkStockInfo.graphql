@@ -1,0 +1,24 @@
+input CheckStockInfoInput {
+  barcode: String!
+  appId: String
+}
+
+type CheckStockInfoResult {
+  success: Boolean!
+  message: String!
+  product: StockInfo
+}
+
+type StockInfo {
+  barcode: String
+  productCode: String
+  qty: Int
+  invoiceDate: String
+  status: String
+  network:String,
+  warehouse: String
+  custName:String
+  custCode: String
+  ricaStatus: String
+ }
+

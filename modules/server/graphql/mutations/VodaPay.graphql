@@ -1,0 +1,59 @@
+input LookUpOrderInput {
+    orderRedeemRef: String!
+    userPin: String!
+    serialNumber: String!
+    deviceUUID: String!
+    devUserId: String!
+    requestId: String!
+    deviceId: String!
+    merchantEntityId: String!
+}
+
+input RedeemOrderInput {
+    merchantEntityId: String!
+    merchantName: String!
+    providerTrxId: String!
+    merchantTrxId: String!
+    amount: Int!
+    secretCode: Int!
+    orderRedeemRef: String!
+    userPin: String!
+    serialNumber: String!
+    deviceUUID: String!
+    devUserId: String!
+    requestId: String!
+    deviceId: String!
+}
+
+input ConfirmRedeemInput {
+    id: String!
+    merchantName: String!
+    merchantTrxId: String!
+    providerTrxId: String!
+    merchantEntityId: String!
+    amount: Int!
+    orderRedeemRef: String!
+    userPin: String!
+    serialNumber: String!
+    deviceUUID: String!
+    devUserId: String!
+    requestId: String!
+    deviceId: String!
+}
+
+input ReverseRedeemInput {
+    id: String!
+    merchantName: String!
+    merchantTrxId: String!
+    providerTrxId: String!
+    merchantEntityId: String!
+    amount: Int!
+    orderRedeemRef: String!
+    userPin: String!
+    serialNumber: String!
+    deviceUUID: String!
+    devUserId: String!
+    requestId: String!
+    deviceId: String!
+}
+

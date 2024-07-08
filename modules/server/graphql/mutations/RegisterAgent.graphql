@@ -1,0 +1,11 @@
+input RegisterAgentInput {
+ custCode: String!
+ base64image: String!
+ base64imageRep: String!
+ appId:String!
+ }
+
+ type RegisterAgentResult {
+  success: Boolean
+  message: String
+}

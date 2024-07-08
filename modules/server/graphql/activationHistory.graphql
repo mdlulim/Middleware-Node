@@ -1,0 +1,22 @@
+input  ActivationHistoryInput {
+ appId:String!
+ invoiceNo:String!
+}
+
+type ActivationHistoryResult{
+  success: Boolean!
+  message: String!
+  edges: [ActivationHistoryEdge!]
+  totalCount: Int!
+}
+
+type ActivationHistoryEdge {
+  node: Activations!
+  cursor: String!
+}
+
+type Activations {
+    id: String!
+    box: String!
+    price: String
+ }

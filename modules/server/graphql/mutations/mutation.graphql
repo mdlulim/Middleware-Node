@@ -1,0 +1,57 @@
+type Mutation {
+    addNetworkContract(input: AddNetworkContractInput!): AddNetworkContractResult
+    addProductDeal(input: AddProductDealInput!): AddProductDealResult
+    airtimeTopup(input: AirtimeTopupInput!): AirtimeTopupResult
+    allocateStock(input: AllocateStockInput!): AllocateStockResult
+    authValidation(input: AuthValidationInput!): AuthValidationPayload
+    authValidationLegacy(input: AuthValidationLegacyInput!): AuthValidationLegacyPayload
+    authResetPassword(input: AuthResetPasswordInput!): AuthResetPasswordPayload
+    authRegistrationUser(input: AccountRegisterUserInput!):AccountRegisterUserPayload
+    authRegistrationConsumer(input: AccountRegisterConsumerInput!): AccountRegisterConsumerPayload
+    getCustomer(input: BusGetCustomerInput!): BusGetCustomerPayload!
+    busTicketCheckout(input: BusTicketCheckoutInput!): BusTicketCheckoutPayload
+    busTicketConfirm(input: BusTicketConfirmInput!): BusTicketConfirmPayload
+    busUpdateCustomer(input: BusUpdateCustomerInput!): BusUpdateCustomerPayload
+    busTicketCancel(input: BusTicketCancelInput!): BusTicketCancelPayload
+    busTicketCancelConfirm(input: BusTicketConfirmCancelInput!): BusTicketConfirmCancelPayload
+    confirmMeter(input: ConfirmMeterInput!): ConfirmMeterResult
+    customerOrder(input: CustomerOrderInput!): CustomerOrderResult
+    dataTopup(input: DataTopupInput!): DataTopupResult
+    electricityTopup(input: ElectricityTopupInput!): ElectricityTopupResult
+    fmcgPayment(input: FmcgPaymentInput!): FmcgPaymentResult!
+    internationalAirtimeTopup(input: InternationalAirtimeTopupInput!):InternationalAirtimeTopupResult
+    internationalBundleTopup(input: IABundleTopupInput!):IABundleTopupResult
+    internationalAirtimeReprint(input: IAReprintInput!):IAReprintResult
+    msisdnValidation(input: MSISDNValidationInput!):MSISDNValidationResult
+    receiveStock(input: ReceiveStockInput!): ReceiveStockResult
+    receiveStockNew(input: ReceiveStockNewInput!): ReceiveStockNewResult
+    validateBatch(input: ValidateProductInput!): ValidateProductResult!
+    registerConsumer(input: RegisterConsumerInput!): RegisterConsumerResult
+    repTransfer(input: RepTransferInput!): RepTransferResult
+    ricaRegister(input: RicaRegisterInput!): RicaRegisterResult
+    setPrintedAndTender(input: SetPrintedAndTenderInput!): SetPrintedAndTenderResult!
+    uploadSignature(input: UploadImageInput!): UploadImageResult!
+    uploadSelfie(input: UploadImageInput!): UploadImageResult
+    uploadId(input: UploadImageInput!): UploadImageResult
+    uploadProofOfResidence(input: UploadImageInput!): UploadImageResult
+    addDevice(input: AddDeviceInput!): AddDeviceResult
+    registerConsumerByd(input: RegisterConsumerBydInput!): RegisterConsumerBydResult
+    merchantOrder(input: MerchantOrderInput!): MerchantOrderResult
+    verifyStockReceived(input: VerifyStockReceivedInput!): VerifyStockReceivedResult
+    activateVoucher(input: ActivateVoucherInput!): ActivateVoucherResult
+    checkVoucherInfo(input: CheckVoucherInfoInput!): CheckVoucherInfoResult!
+    checkStockInfo(input: CheckStockInfoInput!): CheckStockInfoResult!
+    vouchersTopUp(input: VouchersTopUpInput!): VouchersTopUpResult
+    merchantToMerchantTransfer(input: MerchantToMerchantTransferInput!): MerchantToMerchantTransferResult
+    agentRequest(input: AgentRequestInput!): AgentRequestResult
+    consumerProfile(input: ConsumerProfileInput!): ConsumerProfileResult
+    uploadDocument(input: UploadDocumentInput!): UploadDocumentResult
+     registerAgent(input: RegisterAgentInput!): RegisterAgentResult
+    agentRequest(input: AgentRequestInput!): AgentRequestResult
+    vodaPayLookup(input: LookUpOrderInput!): String!
+    vodaPayRedeem(input: RedeemOrderInput!): String!
+    vodaPayConfirmRedeem(input: ConfirmRedeemInput!): String!
+    vodaPayReverseRedeem(input: ReverseRedeemInput!): String!
+    updateNetworkContract(input: UpdateNetworkContractInput!): UpdateNetworkContractResult
+    sellStock(input: SellStockInput!): SellStockResult
+}

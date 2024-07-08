@@ -1,0 +1,27 @@
+input SetPrintedAndTenderInput {
+  transRefs: [String!]!
+  tender: TenderAmounts!
+  userInfo: UserInfo!
+}
+
+input TenderAmounts {
+  cash: Float!
+  change: Float!
+  cheque: Float!
+  creditCard: Float!
+  debitCard: Float!
+  other: Float!
+}
+
+type SetPrintedAndTenderResult {
+  success: Boolean!
+  message: String!
+  accounts: [TenderAccountResult!]
+}
+
+type TenderAccountResult {
+    id: Int!
+    account: String!
+    balance: Float!
+    profit: Float!
+}

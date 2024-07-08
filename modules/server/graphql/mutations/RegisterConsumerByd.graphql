@@ -1,0 +1,10 @@
+input RegisterConsumerBydInput {
+ DeviceSerialNo: String!
+ appIds:String
+ }
+ type RegisterConsumerBydResult {
+  success: Boolean!
+  message: String!
+  status: String!,
+  token: String,
+}

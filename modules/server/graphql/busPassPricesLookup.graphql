@@ -1,0 +1,24 @@
+type BusPassPicesLookUpConnection {
+    edges: [BusPassPriceEdge!]!
+    totalCount: Int
+    success: Boolean!
+    message: String!
+    status: String!
+}
+
+type BusPassPriceEdge {
+    node: BusPassPrice!
+    cursor: String
+}
+
+type BusPassPrice {
+    passId: String
+    price: String
+    validFrom: DateTime!
+    validTo: DateTime!
+}
+
+input BusPassPricesLookUpInput {
+    companyId: String!
+    passId: String!
+}

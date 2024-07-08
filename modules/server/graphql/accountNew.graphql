@@ -1,0 +1,92 @@
+type AccountNew {
+    balance: Float!
+    profit: Float!
+    accountNumber: String!
+}
+
+input AccountNewInput{
+    appId: String
+}
+
+enum Period {
+    ONE
+    THREE
+    WEEK
+}
+
+input AccountRegisterUserInput {
+    userTypeId: String!
+    firstName: String!
+    lastName: String!
+    username: String!
+    email: String!
+}
+
+type AccountRegisterUserPayload {
+    success: Boolean!
+}
+
+input AccountRegisterConsumerInput {
+    username: String!
+    password: String!
+    email: String!
+    firstName: String!
+    lastName: String!
+    name: String!
+    identityTypeId: String!
+    identityReference: String!
+    identityReferenceExpiryDate: String!
+    identityReferenceOriginCountry: String!
+    paymentMethodId: String!
+}
+
+type AccountRegisterConsumerPayload {
+    success: Boolean!
+    output: String
+    name: String
+    groupId: String
+    identityTypeId: String
+    paymentMethodId: String
+    identityReference: String
+    vatRegistered: String
+    isActive: String
+    userId: String
+    repUserId: String
+    identityReferenceExpiryDate: String
+    identityReferenceOriginCountry: String
+    updatedAt: String
+    createdAt: String
+    id: String
+}
+
+type Country {
+    id: Int!
+    name: String!
+    abv: String!
+    abv3: String!
+    abv3_alt: String
+    code: String!
+    slug: String!
+    created_at: String
+    updated_at: String
+}
+
+type IdentityType {
+    id: Int!
+    name: String!
+    status: String!
+    process: String!
+    is_active: Int!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type PaymentMethod {
+    id: Int!
+    name: String!
+    status: String!
+    process: String!
+    is_active: Int!
+    created_at: String!
+    updated_at: String!
+}

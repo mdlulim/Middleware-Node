@@ -1,0 +1,69 @@
+input UserInfo {
+  deviceId: String!
+  serial: String!
+  userPin: String!
+  location: String!
+  version: String!
+}
+
+input FmcgSuppliersInput {
+  userInfo: UserInfo!
+}
+
+type FmcgSuppliersResult {
+  success: Boolean!
+  message: String!
+  suppliers: [FmcgSuppliers]
+}
+
+type FmcgSuppliers {
+  productId: String!
+  trxTypeId: String!
+  name: String!
+}
+
+input FmcgDistributorInput {
+  reference: String!
+  userInfo: UserInfo!
+}
+
+type FmcgDistributorResult {
+  success: Boolean!
+  message: String!
+  distributor: FmcgDistributor
+}
+
+type FmcgDistributor {
+  reference: String!
+  name: String!
+  account: String!
+  cellphone: String!
+  email: String!
+}
+
+input FmcgPaymentInput {
+  name: String!
+  accountNumber: String!
+  bankingRef: String!
+  amount: String!
+  outletAccount: String
+  invoice: String!
+  driverMobile: String!
+  productId: String!
+  userInfo: UserInfo!
+}
+
+type FmcgPaymentResult {
+  success: Boolean!
+  message: String!
+  detail: FmcgPaymentResultDetail
+}
+
+type FmcgPaymentResultDetail {
+  amount: String!
+  transRef: String!
+  customerSlip: String
+  merchantSlip: String
+}
+
+

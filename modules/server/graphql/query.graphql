@@ -1,0 +1,53 @@
+type Query {
+  node(id: ID!): Node
+  account:Account!
+  accountNew(input: AccountNewInput!): AccountNew!
+  bankDetails: BankDetails!
+  bankDetailsNew(input: BankDetailsNewInput!): BankDetailsNew!
+  transactions(input: TransactionsInput!): TransactionsConnection!
+  commissions(input: CommissionsInput!): CommissionsConnection!
+  profile: Profile
+  ticketLookUp(input: BusTicketLookUpInput, auth: BusAccount!): BusTicketLookUpConnection!
+  passTypes(input: BusAccount!): BusPassTypesConnection!
+  passesLookUp(input: BusPassesLookUpInput, auth: BusAccount!): BusPassesLookUpConnection!
+  passPricesLookUp(input: BusPassPricesLookUpInput, auth: BusAccount!): BusPassPicesLookUpConnection!
+  carriers(input: BusAccount!): BusCarriersConnection!
+  stops(input: BusStopsInput!): BusStopsConnection!
+  dataBundles(input: DataBundlesInput!): DataBundlesResult!
+  destinations(companyId: ID!, departureLocationId: String!, auth: BusAccount): BusDestinationsConnection!
+  dataBundlesNetwork(input:DataBundlesNetworkInput!): DataBundlesNetworkResult!
+  networks(input: NetworksInput!): NetworksResult!
+  tickets(svcValidation: SvcValidation, auth: BusAccount!): BusTicketsConnection
+  fetchBanners: BannersResult
+  fetchBannersNew(input :BannerNewInput!): BannersResult
+  getDevices: DevicesResult
+  productsByNetwork(input: ProductsByNetworkInput!): ProductsByNetworkResult!
+  userPerformance(input: UserPerformanceInput!): UserPerformance!
+  svcValidate(svcValidation: SvcValidation, auth: BusAccount!): BusTicketsConnection!
+  fares(input: BusFareInput): BusFaresConnection!
+  countries: [Country]
+  identityTypes: [IdentityType]
+  paymentMethods: [PaymentMethod]
+  customerList: CustomerList
+  customerListNew(input: CustomerListInput!): CustomerList!
+  productDeals(input: ProductDealInput!): ProductDealList!
+  validateProduct(input: ValidateProductInput!): ValidateProductResult!
+  stockList: StockList!
+  stockListNew (input : StockListNewInput!): StockListNew!
+  stockToReceive: StockReceiveList!
+  stockToReceiveNew(input :StockReceiveListNewInput!): StockReceiveListNew!
+  fmcgSuppliers(input: FmcgSuppliersInput!): FmcgSuppliersResult!
+  fmcgDistributor(input: FmcgDistributorInput!): FmcgDistributorResult!
+  fmcgTransactionHistory(input: ReprintInput!, auth: BusAccount!): ReprintConnection!
+  fmcgPrintTransactionHistory(input: ReprintReceiptInput!, auth: BusAccount!): ReprintReceiptConnection!
+  salesOrderList (input : SalesOrderListInput!): SalesOrderList!
+  accountBalance:AccountBalance!
+  accountTransactions (input : AccountTransactionsInput!):AccountTransactions!
+  productByEntity (input: ProductByEntityInput!) : ProductByEntity!
+  productsList : ProductsListResult!
+  validateBox(input: ValidateBoxInput!): ValidateBoxResult!
+  voucherList(input: VoucherListInput!): VoucherListResult!
+  merchantToMerchant(input: MerchantToMerchantInput!): MerchantToMerchantResult
+  activationHistory(input: ActivationHistoryInput!): ActivationHistoryResult
+  customerContracts(input: CustomerContractsInput!): CustomerContractsResult
+}

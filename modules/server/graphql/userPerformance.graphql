@@ -1,0 +1,17 @@
+input UserPerformanceInput {
+  type: String!
+  network: NetworkEnum!
+  customerId: Int!
+  date: String!
+  appId:String
+}
+
+type UserPerformance {
+  success: Boolean!
+  message: String!
+  totalActivations: Float
+  totalConnections: Float
+  totalStock:Float
+  totalTranfer: Float
+  totalSold:Float
+}

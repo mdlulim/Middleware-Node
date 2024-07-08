@@ -1,0 +1,53 @@
+
+// Query variables for device ID:
+{
+  "input":{
+    "deviceId": "29851",
+    "serialNum": "P130189801394",
+    "userPin": "011234",
+    "location": "",
+    "swVer": ""
+  },
+//}
+
+//Query for SVC
+
+//  {
+    "input": {
+      "uid": "HUIJNMK26TJNB",
+      "ticketType": "day_pass",
+      "referenceId": "Ticket2",
+      "fareProductId": "1",
+      "amount": "100",
+      "companyId": "100010",
+      "auth": {
+        "deviceId": "29851",
+        "serialNum": "P130189801394",
+        "userPin": "011234",
+        "location": "",
+        "swVer": "",
+      },
+      "svcData": {
+        "sector10": {
+          "block0": "5648595544547052544C70746A575752",
+          "block1": "6A443031453554374D72494F37614542",
+          "block2": "4E394D47712F5574514676682B305A44"
+        },
+        "sector11": {
+          "block0": "41633779646348743544536745786553",
+          "block1": "313476724E706666582F63326F526D62",
+          "block2": "4E4633742F7356616958753632595643"
+        },
+        "sector12": {
+          "block0": "316A77674657356B6F48553677416C39",
+          "block1": "30554354387263375A4B30525069555A",
+          "block2": "00000000000000000000000000000000"
+        },
+        "sector13": {
+          "block0": "416efc00000000000000000000000000",
+          "block1": "00000000000000000000000000000000",
+          "block2": "00000000000000000000000000000000"
+        }
+      }
+    }
+}

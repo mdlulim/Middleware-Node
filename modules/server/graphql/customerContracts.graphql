@@ -1,0 +1,23 @@
+
+input CustomerContractsInput {
+     appId: String!
+     customerId: Int!
+     network: String
+}
+type CustomerContractsResult {
+  success: Boolean!
+  message: String!
+  data: [Data]
+}
+type Data {
+    id: Int,
+    customer_id: Int
+    name: String
+    is_tiered: Int
+    tier_id: Int
+    ogr: Float
+    act: Float
+    sim: Float
+    network_id: Int
+    is_split: Int
+}

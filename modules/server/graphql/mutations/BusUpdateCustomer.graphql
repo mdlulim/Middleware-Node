@@ -1,0 +1,17 @@
+input BusUpdateCustomerInput {
+  uid: String!
+  name: String!
+  surname: String!
+  cellNumber: String!
+  status: String!
+  auth: BusAccount!
+}
+
+type BusUpdateCustomerPayload {
+  success: Boolean!
+  message: String
+  status: String
+}
+
+
+

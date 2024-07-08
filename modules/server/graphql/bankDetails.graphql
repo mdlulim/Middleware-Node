@@ -1,0 +1,22 @@
+ 
+type BankDetails {
+  edges: [BankDetailsEdge!]
+  totalCount: Int!
+}
+
+type BankDetailsEdge {
+  node: BankDetail!
+  cursor: String!
+}
+
+type BankDetail {
+  id: ID!
+  bank: String!
+  accountName: String!
+  accountNumber: String!
+  branch: String!
+  branchCode: String!
+  universalCode: String!
+  swift: String!
+  reference: String!
+}

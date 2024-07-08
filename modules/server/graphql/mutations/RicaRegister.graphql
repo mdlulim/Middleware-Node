@@ -1,0 +1,43 @@
+input RicaRegisterInput {
+  simDetails: SimDetails!
+  isIndividual: Boolean!
+  identity: Identity!
+  customer: CustomerDetail!
+  appId:String
+}
+
+input SimDetails {
+  network: String!
+  simNumber: String!
+}
+
+input Identity {
+  type: IdentityMethod!
+  number: String!
+  company: String
+}
+
+# IdentityType is a RESERVED WORD
+enum IdentityMethod {
+  RSA_ID
+  PASSPORT
+  BUSINESS
+}
+
+input CustomerDetail {
+  firstName: String!
+  lastName: String!
+  address: String!
+  addressLine2: String
+  suburb: String!
+  city: String!
+  postCode: String!
+  region: String!
+  passportCountry: String!
+}
+
+
+type RicaRegisterResult {
+  success: Boolean!
+  message: String
+}

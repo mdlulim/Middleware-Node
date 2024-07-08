@@ -1,0 +1,12 @@
+type BusPassesLookUpConnection {
+    edges: [BusPassEdge!]!
+    totalCount: Int
+    success: Boolean!
+    message: String!
+    status: String!
+}
+
+
+input BusPassesLookUpInput {
+    ticketNumber: String
+}

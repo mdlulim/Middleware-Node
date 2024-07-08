@@ -1,0 +1,37 @@
+enum NetworkEnum {
+    MTN,
+    CellC,
+    TelkomMobile,
+    Vodacom
+    CConnect
+}
+
+input ProductsByNetworkInput {
+  network: NetworkEnum!
+  appId:String
+}
+
+type ProductsByNetworkResult {
+  success: Boolean!
+  message: String!
+  edges: [ProductsByNetworkEdge!]
+  totalCount: Int!
+}
+
+type ProductsByNetworkEdge {
+  node: ProductByNetwork!
+  cursor: String!
+}
+
+type ProductByNetwork {
+    id: ID!
+    description: String!
+    productCode: String!
+    productId: Int!
+    costPrice: String
+    salePrice: String
+    actExpenseCode: String
+    ogrExpenseCode: String
+    simExpenseCode: String
+}
+

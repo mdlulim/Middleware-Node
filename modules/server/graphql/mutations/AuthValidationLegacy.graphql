@@ -1,0 +1,10 @@
+input AuthValidationLegacyInput {
+  username: String!
+  password: String!
+  clientMutationId: String
+}
+
+type AuthValidationLegacyPayload {
+  authorized: Boolean!
+  clientMutationId: String
+}

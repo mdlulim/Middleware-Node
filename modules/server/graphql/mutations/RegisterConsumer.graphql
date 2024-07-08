@@ -1,0 +1,38 @@
+input RegisterConsumerInput {
+  username: String!
+  password: String!
+  name: String!
+  lastName: String!
+  mobile: String!
+  business: String!
+  email: String!
+  id: String!
+  idType: IdentityMethod
+  address: RegisterConsumerAddress!
+  appId:String
+  deviceSerialNo:String
+}
+
+input RegisterConsumerAddress {
+  line1: String!
+  line2: String
+  line3: String
+  code: Int!
+  city: String!
+  province: String!
+  latitude: Float
+  longitude: Float
+}
+
+type RegisterConsumerResult {
+  success: Boolean!
+  message: String
+  status: Int!
+  token: String
+}
+
+enum IdentityMethod {
+  RSA_ID
+  PASSPORT
+  BUSINESS
+}

@@ -1,0 +1,8 @@
+input AgentRequestInput {
+  appId:String
+}
+
+type AgentRequestResult {
+  success: Boolean!
+  message: String!
+ }

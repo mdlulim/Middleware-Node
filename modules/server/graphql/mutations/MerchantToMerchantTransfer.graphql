@@ -1,0 +1,11 @@
+input MerchantToMerchantTransferInput {
+ accountNo: String!
+ amount: String!
+ cellNumber: String!
+ appId:String
+ }
+
+type MerchantToMerchantTransferResult {
+     success: Boolean!
+     message: String!
+}

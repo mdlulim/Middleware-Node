@@ -1,0 +1,38 @@
+input BusTicketsRequest {
+  totalAmount: Int!
+  edges: [BusTicketsEdges!]!
+  pageInfo: String
+  totalCount: Int
+}
+
+input BusTicketsEdges {
+  node: TicketBus!
+  cursor: String
+}
+
+input TicketBus {
+  id: ID
+  sessionId: String!
+  responseCode: Int!
+  responseMessage: String!
+  companyId: Int!
+  ticketId: Int!
+  ticketNo: String!
+  ticketType: String!
+  routeId1: Int!
+  routeId2: Int!
+  routeCode1: String!
+  routeCode2: String!
+  fare: String!
+  fareProductId: String!
+  departureLocationId: String!
+  destinationLocationId: String!
+  activationDate: DateTime!
+  expiryDate: DateTime!
+  ticketDate: DateTime!
+  numberOfDaysTrips: Int!
+  numberOfTransfers: Int!
+  status: String!
+  rules: String!
+  fareCurrency: String!
+}

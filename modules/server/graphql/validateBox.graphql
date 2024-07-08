@@ -1,0 +1,22 @@
+input ValidateBoxInput {
+  barcode: String!
+  appId: String
+}
+
+type ValidateBoxResult {
+  success: Boolean!
+  message: String!
+  product: Products
+}
+
+type Products {
+  product_id: Int!
+  code: String!
+  desc: String!
+  qty: Int!
+  networkId: Int
+  stockTypeId: Int
+  tradeValue: Float!
+  retailPrice:Float!
+}
+

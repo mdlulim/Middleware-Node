@@ -1,0 +1,8 @@
+input BusAccount {
+        deviceId: String!
+        serialNum: String!
+    deviceUUID: String
+        userPin: String!
+        location: String!
+        swVer: String!
+}

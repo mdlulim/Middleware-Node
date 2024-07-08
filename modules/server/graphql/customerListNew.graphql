@@ -1,0 +1,21 @@
+
+input  CustomerListInput {
+ appId:String
+}
+
+type CustomerListNew {
+  edges: [CustomerListEdge!]
+  totalCount: Int!
+}
+
+type CustomerListNewEdge {
+  node: Customer!
+  cursor: String!
+}
+
+type Customer {
+  id: ID!
+  name: String!
+  customerCode: String!
+  customerId: Int!
+}

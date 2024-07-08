@@ -1,0 +1,25 @@
+
+input StockListNewInput {
+   appId: String
+}
+
+type StockListNew {
+  success: Boolean!
+  message: String!
+  edges: [StockListNewEdge!]
+  totalCount: Int!
+ }
+
+type StockListNewEdge {
+  node: Stock!
+  cursor: String!
+}
+
+type Stock {
+  id: String!
+  productId: Int!
+  name: String!
+  productCode: String!
+  network: String!
+  qty: Int!
+}

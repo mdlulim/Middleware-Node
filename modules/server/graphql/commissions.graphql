@@ -1,0 +1,30 @@
+input CommissionsInput {
+  period: Period!
+  appId: String
+}
+
+type CommissionsConnection {
+    totalRetail: Float!
+    totalProfit: Float!
+    edges: [CommissionEdge!]
+    pageInfo: PageInfo
+    totalCount: Int
+}
+type CommissionEdge {
+    node: Commission!
+    cursor: String
+}
+
+type Commission {
+    id: ID
+    retail: Float!
+    profit: Float!
+    qty: Int!
+    name: String!
+}
+
+enum Period {
+    ONE_DAY
+    THREE_DAY
+    ONE_WEEK
+}

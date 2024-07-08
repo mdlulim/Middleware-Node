@@ -1,0 +1,16 @@
+type Device {
+    id: ID!
+    type: String!
+    serialNo: String!
+    bydNo: String
+}
+
+type DeviceEdge {
+    node: Device!
+    cursor: String!
+}
+
+type DevicesResult {
+    total: Int!
+    edges: [DeviceEdge!]
+}

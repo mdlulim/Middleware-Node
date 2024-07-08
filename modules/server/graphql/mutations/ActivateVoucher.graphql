@@ -1,0 +1,13 @@
+input ActivateVoucherInput {
+  order: [ActivateStock!]!
+  appId:String
+}
+
+type ActivateVoucherResult {
+  success: Boolean!
+  message: String!
+
+}
+input ActivateStock {
+    barcode: [String!]!
+}

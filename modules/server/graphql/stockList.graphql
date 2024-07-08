@@ -1,0 +1,21 @@
+
+type StockList {
+  success: Boolean!
+  message: String!
+  edges: [StockListEdge!]
+  totalCount: Int!
+ }
+
+type StockListEdge {
+  node: Stock!
+  cursor: String!
+}
+
+type Stock {
+  id: String!
+  productId: Int!
+  name: String!
+  productCode: String!
+  network: String!
+  qty: Int!
+}

@@ -1,0 +1,18 @@
+enum VouchersTopUpTypes{
+    SupaBets
+    Hollywood
+    Ringas
+    BluVoucher
+}
+input VouchersTopUpInput {
+ qty: Int!
+ productId: Int!
+ cellNumber: String!
+ voucherType: VouchersTopUpTypes!
+ appId:String
+ }
+
+type VouchersTopUpResult {
+     success: Boolean!
+     message: String!
+}

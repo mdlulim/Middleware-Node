@@ -1,0 +1,24 @@
+
+
+type StockReceiveList {
+  success: Boolean!
+  message: String!
+  edges: [StockReceiveListEdge!]
+  totalCount: Int!
+}
+
+type StockReceiveListEdge {
+  node: StockReceive!
+  cursor: String!
+}
+
+type StockReceive {
+  id: String!
+  orderId: Int!
+  productId: Int!
+  name: String!
+  productCode: String!
+  network: String!
+  qty: Int!
+  scannedQty: Int!
+}

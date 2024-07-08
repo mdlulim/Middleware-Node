@@ -1,0 +1,26 @@
+type Profile {
+    id: Int!
+    customerId: Int!
+    username: String!
+    firstName: String!
+    lastName: String!
+    email: String!
+    identityReference:String!
+    cellNumber:String!
+    userType: Role!
+    devices: [DeviceType]
+    bydNo: String
+    ricaUsername:String
+    isRicaActive:Int
+}
+
+type Role {
+    id: Int!
+    description: String!
+    slug: String!
+}
+
+type DeviceType {
+    type: String
+    serial_no: String
+}

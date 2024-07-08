@@ -1,0 +1,26 @@
+input AirtimeTopupInput {
+  amount: String!
+  phoneNumber: String!
+  network: String!
+  reference: String!
+  appId: String
+}
+
+type AirtimeTopupResult {
+  success: Boolean!
+  message: String
+}
+
+input InternationalAirtimeTopupInput {
+  amount: String!,
+  phoneNumber: String!,
+  network: String!,
+  reference: String!,
+  senderPhoneNumber: String!,
+  productCode: String!
+}
+
+type InternationalAirtimeTopupResult {
+  success: Boolean!
+  message: String
+}

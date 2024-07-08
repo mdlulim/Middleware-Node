@@ -1,0 +1,14 @@
+type BusPassTypesConnection {
+    edges: [BusPassTypeEdge!]!
+    totalCount: Int
+}
+
+type BusPassTypeEdge {
+    node: BusPassType!
+    cursor: String
+}
+
+type BusPassType {
+    passTypeId: ID
+    passType: String!
+}

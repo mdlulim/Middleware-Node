@@ -1,0 +1,23 @@
+
+ type ProductsList {
+     id: String!
+     description: String!
+     productCode: String!
+     productId: Int!
+     costPrice: String
+     salePrice: String
+ }
+
+type ProductsListResult {
+  success: Boolean!
+  message: String!
+  edges: [ProductsListEdge!]
+  totalCount: Int!
+}
+
+type ProductsListEdge {
+  node: ProductsList!
+  cursor: String!
+}
+
+

@@ -1,0 +1,46 @@
+input BusTicketCancelInput {
+  uid: String!
+  transref: String!
+  svcData: [Sector]!
+  referenceId: String!
+  status: String!
+  ticketId: String!
+  transactionId: String!
+  auth: BusAccount!
+}
+
+type BusTicketCancelPayload {
+  svcData: SvcUpdate
+  ticket:BusTicket
+  transaction: Transaction
+  transref: String
+  responseMessage: String
+  success: Boolean!
+}
+
+
+input BusTicketConfirmCancelInput {
+  uid: String!
+  transref: String!
+  svcData: [Sector]!
+  status: String!
+  ticketId: String!
+  transactionId: String!
+  auth: BusAccount!
+}
+
+type BusTicketConfirmCancelPayload {
+  message: String
+  success: Boolean!
+  transref: String
+  status: String
+  svcData: SvcUpdate
+  ticket:BusTicket
+  transaction: Transaction
+  transref: String
+  printLines: String
+  merchantPrintLines: String
+}
+
+
+

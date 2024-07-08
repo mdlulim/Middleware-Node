@@ -1,0 +1,25 @@
+input SalesOrderListInput {
+   appId: String
+}
+
+type SalesOrderList {
+  success: Boolean!
+  message: String!
+  edges: [SalesOrderListEdge!]
+  totalCount: Int!
+ }
+
+type SalesOrderListEdge {
+  node: Order!
+  cursor: String!
+}
+
+type Order {
+  id: String!
+  orderId: Int!
+  statusName: String!
+  productCode: String!
+  productDescription: String!
+  qty: Int!
+
+}

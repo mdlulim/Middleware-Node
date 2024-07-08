@@ -1,0 +1,18 @@
+type BusDestinationsConnection {
+    edges: [BusDestinationsEdge!]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type BusDestinationsEdge {
+    node: BusDestinationLocation!
+    cursor: String
+}
+
+type BusDestinationLocation {
+    locationId: String
+    type: String
+    stationId: String
+    name: String
+    entityId: String
+}

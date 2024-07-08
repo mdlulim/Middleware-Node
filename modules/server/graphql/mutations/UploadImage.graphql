@@ -1,0 +1,10 @@
+input UploadImageInput {
+  base64image: String!
+  appId:String
+}
+
+type UploadImageResult {
+  success: Boolean!
+  message: String!
+  status: Int!
+}

@@ -1,0 +1,12 @@
+type ReprintReceipt {
+    line: String
+}
+
+type ReprintReceiptConnection {
+    printLines: String
+}
+
+input ReprintReceiptInput {
+    transId: ID!
+    userReprint: Int!
+}

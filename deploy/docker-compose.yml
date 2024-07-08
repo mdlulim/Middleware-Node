@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  web:
+    image: registry.gitlab.com/stackworx.io/bluelabel/mobile-application-server/server:$VERSION
+    env_file: app.env
+    environment:
+      - TLS_ENABLED=true
+      - TLS_CERT=/var/lib/tls/mobile.api.qa.bltelecoms.net.crt
+      - TLS_KEY=/var/lib/tls/mobile.api.qa.bltelecoms.net.key
+    deploy:
+      restart_policy:
+        condition: on-failure
+      placement:
+        max_replicas_per_node: 1
+      replicas: 3
+    volumes:
+      - type: bind
+        read_only: true
+        source: /opt/deploy/tls
+        target: /var/lib/tls
+    ports:
+      - target: 80
+        published: 443
+        mode: host
+        protocol: tcp

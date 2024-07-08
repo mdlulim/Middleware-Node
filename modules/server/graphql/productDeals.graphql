@@ -1,0 +1,28 @@
+input ProductDealInput {
+  productId: Int!
+  customerId: Int!
+  appId:String
+}
+
+type ProductDealList {
+  status: String!
+  edges: [ProductDealListEdge!]
+  totalCount: Int!
+}
+
+type ProductDealListEdge {
+  node: ProductDeal!
+  cursor: String!
+}
+
+type ProductDeal {
+  id: ID!
+  dealId: Int!
+  name: String!
+  isTiered: Boolean!
+  tierId: Int
+  ogr: Float!
+  act: Float!
+  sim: Float!
+  isSplit: Boolean!
+}

@@ -1,0 +1,2387 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+directive @relayId(
+  type: String!
+) on FIELD_DEFINITION | ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+type Account {
+  balance: Float!
+  profit: Float!
+  accountNumber: String!
+}
+
+type AccountBalance {
+  success: Boolean!
+  message: String!
+  balance: Float!
+  currentBalance: Float!
+  accountNo: Float!
+}
+
+type AccountNew {
+  balance: Float!
+  profit: Float!
+  accountNumber: String!
+}
+
+input AccountNewInput {
+  appId: String
+}
+
+input AccountRegisterConsumerInput {
+  email: String!
+  firstName: String!
+  identityReference: String!
+  identityReferenceExpiryDate: String!
+  identityReferenceOriginCountry: String!
+  identityTypeId: String!
+  lastName: String!
+  name: String!
+  password: String!
+  paymentMethodId: String!
+  username: String!
+}
+
+type AccountRegisterConsumerPayload {
+  createdAt: String
+  groupId: String
+  id: String
+  identityReference: String
+  identityReferenceExpiryDate: String
+  identityReferenceOriginCountry: String
+  identityTypeId: String
+  isActive: String
+  name: String
+  output: String
+  paymentMethodId: String
+  repUserId: String
+  success: Boolean!
+  updatedAt: String
+  userId: String
+  vatRegistered: String
+}
+
+input AccountRegisterUserInput {
+  email: String!
+  firstName: String!
+  lastName: String!
+  userTypeId: String!
+  username: String!
+}
+
+type AccountRegisterUserPayload {
+  success: Boolean!
+}
+
+type AccountTransactions {
+  success: Boolean!
+  message: String!
+  edges: [AccountTransactionsEdge!]
+  totalCount: Int!
+}
+
+type AccountTransactionsEdge {
+  node: Transactions!
+  cursor: String!
+}
+
+input AccountTransactionsInput {
+  startDate: String!
+  endDate: String!
+}
+
+input ActivateStock {
+  barcode: [String!]!
+}
+
+input ActivateVoucherInput {
+  order: [ActivateStock!]!
+  appId: String
+}
+
+type ActivateVoucherResult {
+  success: Boolean!
+  message: String!
+}
+
+type ActivationHistoryEdge {
+  node: Activations!
+  cursor: String!
+}
+
+input ActivationHistoryInput {
+  appId: String!
+  invoiceNo: String!
+}
+
+type ActivationHistoryResult {
+  success: Boolean!
+  message: String!
+  edges: [ActivationHistoryEdge!]
+  totalCount: Int!
+}
+
+type Activations {
+  id: String!
+  box: String!
+  price: String
+}
+
+input AddDeviceInput {
+  serialNo: String!
+  appId: String
+}
+
+type AddDeviceResult {
+  success: Boolean!
+  message: String!
+}
+
+input AddNetworkContractInput {
+  name: String!
+  customerId: Int!
+  network: NetworkEnum!
+  isTiered: Boolean
+  isSplit: Boolean
+  ogr: Float!
+  act: Float!
+  sim: Float!
+  appId: String
+}
+
+type AddNetworkContractResult {
+  success: Boolean!
+  message: String!
+}
+
+input AddProductDealInput {
+  productId: Int!
+  customerId: Int!
+  name: String!
+  ogr: Float!
+  act: Float!
+  sim: Float!
+  appId: String
+}
+
+type AddProductDealResult {
+  success: Boolean!
+  message: String!
+}
+
+type AeonAuth {
+  authorized: Boolean!
+  clientMutationId: String
+  success: Boolean!
+}
+
+type AeonResult {
+  success: Boolean!
+  message: String
+  response: String
+}
+
+input AgentRequestInput {
+  appId: String
+}
+
+type AgentRequestResult {
+  success: Boolean!
+  message: String!
+}
+
+input AirtimeTopupInput {
+  amount: String!
+  phoneNumber: String!
+  network: String!
+  reference: String!
+  appId: String
+}
+
+type AirtimeTopupResult {
+  success: Boolean!
+  message: String
+}
+
+input AllocateStock {
+  product_id: Int!
+  qty: Int!
+  deal_id: Int!
+  sale_price: Float!
+  barcode: [String!]!
+}
+
+input AllocateStockInput {
+  stock: [AllocateStock!]!
+  customer_id: Int!
+  delivery: DeliveryEnum!
+  appId: String
+}
+
+type AllocateStockResult {
+  success: Boolean!
+  message: String!
+}
+
+input AuthResetPasswordInput {
+  method: ResetMethod!
+  detail: String!
+  clientMutationId: String
+  appId: String
+}
+
+type AuthResetPasswordPayload {
+  success: Boolean!
+  clientMutationId: String
+}
+
+input AuthValidationInput {
+  username: String!
+  password: String!
+  appId: String
+  currentStatus: Int
+  clientMutationId: String
+}
+
+input AuthValidationLegacyInput {
+  username: String!
+  password: String!
+  clientMutationId: String
+}
+
+type AuthValidationLegacyPayload {
+  authorized: Boolean!
+  clientMutationId: String
+}
+
+type AuthValidationPayload {
+  authorized: Boolean!
+  token: String
+  status: Int!
+  profile: Profile
+  clientMutationId: String
+}
+
+type BankDetail {
+  accountName: String!
+  accountNumber: String!
+  bank: String!
+  branch: String!
+  branchCode: String!
+  id: ID!
+  reference: String!
+  swift: String!
+  universalCode: String!
+}
+
+type BankDetails {
+  edges: [BankDetailsEdge!]
+  totalCount: Int!
+}
+
+type BankDetailsEdge {
+  cursor: String!
+  node: BankDetail!
+}
+
+type BankDetailsNew {
+  edges: [BankDetailsEdge!]
+  totalCount: Int!
+}
+
+input BankDetailsNewInput {
+  appId: String
+}
+
+type Banner {
+  id: ID!
+  url: String!
+}
+
+type BannerEdge {
+  cursor: String!
+  node: Banner!
+}
+
+input BannerNewInput {
+  appId: String
+}
+
+type BannersResult {
+  edges: [BannerEdge!]
+  total: Int!
+}
+
+type Bundle {
+  id: ID!
+  network: String!
+  category: String!
+  desc: String!
+  amount: String!
+  code: Int!
+}
+
+type BundleNetwork {
+  category: String!
+  desc: String!
+  amount: String!
+  code: Int!
+}
+
+type BundlesEdge {
+  node: Bundle!
+  cursor: String!
+}
+
+input BusAccount {
+  deviceId: String!
+  serialNum: String!
+  deviceUUID: String
+  userPin: String!
+  location: String!
+  swVer: String!
+}
+
+type BusCarrierLocation {
+  name: String
+  shortName: String
+  companyId: String
+  role: String
+  type: String
+}
+
+type BusCarriersConnection {
+  companiesEdges: [BusCarriersEdge!]!
+  passTypesEdges: [BusPassTypeEdge!]!
+  pageInfo: PageInfo
+  companiesCount: Int
+  passTypesCount: Int
+  success: Boolean!
+  message: String!
+  status: String!
+}
+
+type BusCarriersEdge {
+  node: BusCarrierLocation!
+  cursor: String
+}
+
+type BusCustomerInfo {
+  uid: ID
+  name: String
+  surname: String
+  cellNumber: String
+  status: String
+  issueDate: String
+  expiry: String
+}
+
+type BusDestinationLocation {
+  locationId: String
+  type: String
+  stationId: String
+  name: String
+  entityId: String
+}
+
+type BusDestinationsConnection {
+  edges: [BusDestinationsEdge!]!
+  pageInfo: PageInfo
+  totalCount: Int
+}
+
+type BusDestinationsEdge {
+  node: BusDestinationLocation!
+  cursor: String
+}
+
+type BusFare {
+  id: ID
+  period: String!
+  fareProductId: String!
+  code: String!
+  routes: RouteRecursor!
+  companyId: ID!
+  weekdays: String!
+  created: DateTime!
+  availableFrom: DateTime!
+  availableTo: DateTime!
+  transferCount: Int!
+  passValue: Int!
+  tripsPerDay: Int!
+  passType: String!
+  price: String!
+  name: String!
+  shortName: String!
+  desc: String
+}
+
+input BusFareInput {
+  companyId: String!
+  departureLocationId: ID
+  destinationLocationId: ID
+  routeId: Int
+  fareProductId: ID
+  auth: BusAccount
+}
+
+type BusFaresConnection {
+  totalAmount: Int
+  edges: [BusFaresEdge!]
+  pageInfo: PageInfo
+  totalCount: Int
+  status: Int
+  sessionId: String
+  responseCode: Int
+  responseMessage: String
+}
+
+type BusFaresEdge {
+  node: BusFare!
+  cursor: String
+}
+
+input BusGetCustomerInput {
+  uid: String!
+  auth: BusAccount!
+}
+
+type BusGetCustomerPayload {
+  success: Boolean!
+  message: String!
+  customerInfo: BusCustomerInfo!
+  pageNumber: Int
+  totalPages: Int
+  maxRecordsPerPage: Int
+  recordsFetched: Int
+}
+
+type BusLocation {
+  category: String
+  locationId: String
+  name: String
+  transfersAllowed: Int
+}
+
+type BusLocationEdge {
+  node: BusLocation!
+  cursor: String
+}
+
+type BusPass {
+  activationRule: String
+  companyId: ID
+  name: String
+  passId: String
+  passType: String
+  passValue: String
+  period: String
+  price: String
+  tripsPerDay: Int
+  weekdays: String
+}
+
+type BusPassEdge {
+  node: BusPass!
+  cursor: String
+}
+
+type BusPassPicesLookUpConnection {
+  edges: [BusPassPriceEdge!]!
+  totalCount: Int
+  success: Boolean!
+  message: String!
+  status: String!
+}
+
+type BusPassPrice {
+  passId: String
+  price: String
+  validFrom: DateTime!
+  validTo: DateTime!
+}
+
+type BusPassPriceEdge {
+  node: BusPassPrice!
+  cursor: String
+}
+
+input BusPassPricesLookUpInput {
+  companyId: String!
+  passId: String!
+}
+
+type BusPassType {
+  passTypeId: ID
+  passType: String!
+}
+
+type BusPassTypeEdge {
+  node: BusPassType!
+  cursor: String
+}
+
+type BusPassTypesConnection {
+  edges: [BusPassTypeEdge!]!
+  totalCount: Int
+}
+
+type BusPassesLookUpConnection {
+  edges: [BusPassEdge!]!
+  totalCount: Int
+  success: Boolean!
+  message: String!
+  status: String!
+}
+
+input BusPassesLookUpInput {
+  ticketNumber: String
+}
+
+type BusStopLocation {
+  id: ID
+  name: String!
+}
+
+type BusStopsConnection {
+  edges: [BusStopsEdge!]!
+  pageInfo: PageInfo
+  totalCount: Int
+}
+
+type BusStopsEdge {
+  node: BusStopLocation!
+  cursor: String
+}
+
+input BusStopsInput {
+  companyId: ID!
+  auth: BusAccount!
+}
+
+type BusTicket {
+  id: ID
+  sessionId: String
+  responseCode: Int
+  responseMessage: String
+  companyId: Int
+  ticketId: Int
+  ticketNo: String
+  ticketType: String
+  ticketSaleId: Int
+  passId: Int
+  routes: RouteRecursor
+  fare: String
+  fareProductId: String
+  departureLocationId: String
+  destinationLocationId: String
+  activationDate: DateTime
+  expiryDate: DateTime
+  ticketDate: DateTime
+  numberOfDaysTrips: Int
+  numberOfTransfers: Int
+  status: String
+  rules: String
+  fareCurrency: String
+  locations: [BusTicketLocation]
+}
+
+input BusTicketCancelInput {
+  uid: String!
+  transref: String!
+  svcData: [Sector]!
+  referenceId: String!
+  status: String!
+  ticketId: String!
+  transactionId: String!
+  auth: BusAccount!
+}
+
+type BusTicketCancelPayload {
+  svcData: SvcUpdate
+  ticket: BusTicket
+  transaction: Transaction
+  transref: String
+  responseMessage: String
+  success: Boolean!
+}
+
+input BusTicketCheckoutInput {
+  uid: String!
+  ticketType: String!
+  referenceId: String!
+  passId: String!
+  amount: String!
+  companyId: String!
+  svcData: [Sector]!
+  auth: BusAccount!
+}
+
+type BusTicketCheckoutPayload {
+  svcData: SvcUpdate
+  ticket: BusTicket
+  transaction: Transaction
+  transref: String
+  message: String
+  success: Boolean!
+}
+
+input BusTicketConfirmCancelInput {
+  uid: String!
+  transref: String!
+  svcData: [Sector]!
+  status: String!
+  ticketId: String!
+  transactionId: String!
+  auth: BusAccount!
+}
+
+type BusTicketConfirmCancelPayload {
+  message: String
+  success: Boolean!
+  transref: String
+  status: String
+  svcData: SvcUpdate
+  ticket: BusTicket
+  transaction: Transaction
+  printLines: String
+  merchantPrintLines: String
+}
+
+input BusTicketConfirmInput {
+  transref: String!
+  uid: String!
+  status: String!
+  ticketId: String!
+  transactionId: String!
+  amount: String!
+  paymentType: String!
+  companyId: String!
+  svcData: [Sector]!
+  auth: BusAccount!
+}
+
+type BusTicketConfirmPayload {
+  message: String
+  success: Boolean!
+  status: String
+  svcData: SvcUpdate
+  ticket: BusTicket
+  transaction: Transaction
+  transref: String
+  printLines: String
+  merchantPrintLines: String
+}
+
+input BusTicketInput {
+  uid: String!
+  ticketId: String
+}
+
+type BusTicketLocation {
+  location_id: String
+  location_name: String
+  transfer_allowed: Int
+}
+
+type BusTicketLookUpConnection {
+  passEdges: [BusPassEdge!]
+  locationEdges: [BusLocationEdge!]
+  availableFrom: DateTime
+  availableTo: DateTime
+  ticketId: ID
+  ticketNumber: String
+  transferValidityPeriodMinutes: String
+  noOfTransfers: Int
+  passCount: Int
+  locationCount: Int
+  success: Boolean!
+  message: String!
+  status: String!
+}
+
+input BusTicketLookUpInput {
+  companyId: String
+  departureLocationId: ID
+  destinationLocationId: ID
+  passType: String
+  passId: String
+}
+
+type BusTicketsConnection {
+  message: String!
+  success: Boolean!
+  edges: [BusTicketsEdge!]
+  pageInfo: PageInfo
+  totalCount: Int
+}
+
+type BusTicketsEdge {
+  node: BusTicket!
+  cursor: String
+}
+
+input BusTicketsEdges {
+  node: TicketBus!
+  cursor: String
+}
+
+input BusTicketsRequest {
+  totalAmount: Int!
+  edges: [BusTicketsEdges!]!
+  pageInfo: String
+  totalCount: Int
+}
+
+input BusUpdateCustomerInput {
+  uid: String!
+  name: String!
+  surname: String!
+  cellNumber: String!
+  status: String!
+  auth: BusAccount!
+}
+
+type BusUpdateCustomerPayload {
+  success: Boolean!
+  message: String
+  status: String
+}
+
+type Card {
+  type: String!
+  card_number: String!
+}
+
+input CheckStockInfoInput {
+  barcode: String!
+  appId: String
+}
+
+type CheckStockInfoResult {
+  success: Boolean!
+  message: String!
+  product: StockInfo
+}
+
+input CheckVoucherInfoInput {
+  barcode: String!
+  appId: String
+}
+
+type CheckVoucherInfoResult {
+  success: Boolean!
+  message: String!
+  product: Details
+}
+
+type Commission {
+  id: ID
+  retail: Float!
+  profit: Float!
+  qty: Int!
+  name: String!
+}
+
+type CommissionEdge {
+  node: Commission!
+  cursor: String
+}
+
+type CommissionsConnection {
+  totalRetail: Float!
+  totalProfit: Float!
+  edges: [CommissionEdge!]
+  pageInfo: PageInfo
+  totalCount: Int
+}
+
+input CommissionsInput {
+  period: Period!
+  appId: String
+}
+
+type ConfirmMeterDetail {
+  transRef: String!
+  customer: String!
+  address: String!
+  utility: String!
+  trxTypeId: Int!
+}
+
+input ConfirmMeterInput {
+  meterNumber: String!
+  appId: String
+}
+
+type ConfirmMeterResult {
+  success: Boolean!
+  message: String!
+  detail: ConfirmMeterDetail
+}
+
+input ConfirmRedeemInput {
+  id: String!
+  merchantName: String!
+  merchantTrxId: String!
+  providerTrxId: String!
+  merchantEntityId: String!
+  amount: Int!
+  orderRedeemRef: String!
+  userPin: String!
+  serialNumber: String!
+  deviceUUID: String!
+  devUserId: String!
+  requestId: String!
+  deviceId: String!
+}
+
+input ConsumerProfileInput {
+  appId: String!
+  custCode: String!
+}
+
+type ConsumerProfileResult {
+  success: Boolean!
+  message: String!
+  customerId: Int
+  username: String
+  names: String
+  email: String
+  identity_reference: String
+  cellNumber: String
+  address_line_1: String
+  address_line_2: String
+  city: String
+  postal_code: String
+  province: String
+  user_type: String
+  customer_status: String
+  payment_method: String
+  identity_type: String
+  images: [Images]
+}
+
+type Country {
+  abv: String!
+  abv3: String!
+  abv3_alt: String
+  code: String!
+  created_at: String
+  id: Int!
+  name: String!
+  slug: String!
+  updated_at: String
+}
+
+type Customer {
+  customerCode: String!
+  customerId: Int!
+  id: ID!
+  name: String!
+}
+
+input CustomerContractsInput {
+  appId: String!
+  customerId: Int!
+  network: String
+}
+
+type CustomerContractsResult {
+  success: Boolean!
+  message: String!
+  data: [Data]
+}
+
+input CustomerDetail {
+  firstName: String!
+  lastName: String!
+  address: String!
+  addressLine2: String
+  suburb: String!
+  city: String!
+  postCode: String!
+  region: String!
+  passportCountry: String!
+}
+
+type CustomerList {
+  edges: [CustomerListEdge!]
+  totalCount: Int!
+}
+
+type CustomerListEdge {
+  node: Customer!
+  cursor: String!
+}
+
+input CustomerListInput {
+  appId: String
+}
+
+type CustomerListNew {
+  edges: [CustomerListEdge!]
+  totalCount: Int!
+}
+
+type CustomerListNewEdge {
+  node: Customer!
+  cursor: String!
+}
+
+input CustomerOrder {
+  productId: Int!
+  qty: Int!
+  dealId: Int!
+  salePrice: Float!
+}
+
+input CustomerOrderInput {
+  order: [CustomerOrder!]!
+  customerId: Int!
+  delivery: DeliveryEnum!
+  appId: String
+}
+
+type CustomerOrderResult {
+  success: Boolean!
+  message: String!
+}
+
+type Data {
+  id: Int
+  customer_id: Int
+  name: String
+  is_tiered: Int
+  tier_id: Int
+  ogr: Float
+  act: Float
+  sim: Float
+  network_id: Int
+  is_split: Int
+}
+
+input DataBundlesInput {
+  network: DataBundlesInputNetworks!
+  appId: String
+}
+
+enum DataBundlesInputNetworks {
+  MTN
+  CellC
+  TelkomMobile
+  Vodacom
+  CCONNECT
+}
+
+input DataBundlesNetworkInput {
+  appId: String
+}
+
+type DataBundlesNetworkResult {
+  success: Boolean!
+  message: String
+  cellc: [BundleNetwork]!
+  mtn: [BundleNetwork]!
+  telkom: [BundleNetwork]!
+  vodacom: [BundleNetwork]!
+  cconnect: [BundleNetwork]!
+}
+
+type DataBundlesResult {
+  success: Boolean!
+  message: String!
+  edges: [BundlesEdge!]
+  totalCount: Int!
+}
+
+input DataTopupInput {
+  code: Int!
+  phoneNumber: String!
+  network: String!
+  reference: String!
+  appId: String
+}
+
+type DataTopupResult {
+  success: Boolean!
+  message: String
+}
+
+scalar DateTime
+
+enum DeliveryEnum {
+  Collection
+  Courier
+  Delivery
+}
+
+type Details {
+  barcode: String
+  pod: String
+  productCode: String
+  qty: Int
+  status: String
+}
+
+type Device {
+  id: ID!
+  type: String!
+  serialNo: String!
+  bydNo: String
+}
+
+type DeviceEdge {
+  node: Device!
+  cursor: String!
+}
+
+type DeviceType {
+  type: String
+  serial_no: String
+}
+
+type DevicesResult {
+  total: Int!
+  edges: [DeviceEdge!]
+}
+
+type DummyNode implements Node {
+  id: ID!
+}
+
+input ElectricityTopupInput {
+  amount: String!
+  meterNumber: String!
+  cellNumber: String!
+  appId: String
+}
+
+type ElectricityTopupResult {
+  success: Boolean!
+  message: String!
+}
+
+type FmcgDistributor {
+  reference: String!
+  name: String!
+  account: String!
+  cellphone: String!
+  email: String!
+}
+
+input FmcgDistributorInput {
+  reference: String!
+  userInfo: UserInfo!
+}
+
+type FmcgDistributorResult {
+  success: Boolean!
+  message: String!
+  distributor: FmcgDistributor
+}
+
+input FmcgPaymentInput {
+  name: String!
+  accountNumber: String!
+  bankingRef: String!
+  amount: String!
+  outletAccount: String
+  invoice: String!
+  driverMobile: String!
+  productId: String!
+  userInfo: UserInfo!
+}
+
+type FmcgPaymentResult {
+  success: Boolean!
+  message: String!
+  detail: FmcgPaymentResultDetail
+}
+
+type FmcgPaymentResultDetail {
+  amount: String!
+  transRef: String!
+  customerSlip: String
+  merchantSlip: String
+}
+
+type FmcgSuppliers {
+  productId: String!
+  trxTypeId: String!
+  name: String!
+}
+
+input FmcgSuppliersInput {
+  userInfo: UserInfo!
+}
+
+type FmcgSuppliersResult {
+  success: Boolean!
+  message: String!
+  suppliers: [FmcgSuppliers]
+}
+
+input IAAuth {
+  deviceId: String!
+  transType: String!
+  userPin: String!
+  deviceSer: String!
+  deviceUUID: String
+  reference: String
+}
+
+type IABundleTopupDataResult {
+  transRef: String!
+  supplierName: String!
+  phoneNumber: String!
+  tenderAmount: String!
+  tenderVat: String!
+  receiveAmount: String!
+  ref: String!
+  date: String!
+  reference: String!
+  productCode: String!
+  callCenter: String
+  printLines: String!
+  merchantPrintLines: String!
+  recon: IARecon
+}
+
+input IABundleTopupInput {
+  auth: BusAccount!
+  iaAuth: IAAuth!
+  transType: String!
+  phoneNumber: String!
+  amount: String!
+  senderPhoneNumber: String!
+  productCode: String!
+  recon: IAReconInput
+  network: String!
+}
+
+type IABundleTopupResult {
+  success: Boolean!
+  message: String!
+  data: IABundleTopupDataResult
+}
+
+type IAProduct {
+  type: String!
+  network: String!
+  description: String!
+  amount: String!
+  productCode: String!
+  top5Seller: String!
+}
+
+type IARecon {
+  batchNumber: String!
+  terminalId: String!
+  merchantId: String!
+  transNumber: String!
+  transReference: String!
+  sysReference: String!
+  transDateTime: String!
+  businessDate: String!
+  transType: String!
+  accountNumber: String!
+  productId: String!
+  amount: String!
+  authoriser: String!
+  productName: String!
+}
+
+input IAReconInput {
+  batchNumber: String!
+  terminalId: String!
+  merchantId: String!
+  transNumber: String!
+  transReference: String!
+  sysReference: String!
+  transDateTime: String!
+  businessDate: String!
+  transType: String!
+  accountNumber: String!
+  productId: String!
+  amount: String!
+  authoriser: String!
+  productName: String!
+  auth: BusAccount!
+}
+
+input IAReprintInput {
+  transRef: String!
+  origReference: String!
+  phoneNumber: String!
+  iaAuth: IAAuth!
+  auth: BusAccount!
+}
+
+type IAReprintResult {
+  transRef: String!
+  origReference: String!
+  phoneNumber: String!
+  tenderAmount: String!
+  tenderVat: String!
+  receiveAmount: String!
+  date: String!
+  reference: String!
+  callCenter: String
+  printLines: String!
+  merchantPrintLines: String!
+  recon: IARecon
+}
+
+input IATopupInput {
+  phoneNumber: String!
+  amount: String!
+  senderPhoneNumber: String!
+  productCode: String!
+  recon: IAReconInput
+  iaAuth: IAAuth!
+  auth: BusAccount!
+  network: String!
+}
+
+type IATopupResult {
+  transRef: String!
+  supplierName: String!
+  phoneNumber: String!
+  tenderAmount: String!
+  tenderVat: String!
+  receiveAmount: String!
+  ref: String!
+  date: String!
+  productCode: String!
+  reference: String!
+  CallCenter: String
+  printLines: String!
+  merchantPrintLines: String!
+  Recon: IARecon
+}
+
+input Identity {
+  type: IdentityMethod!
+  number: String!
+  company: String
+}
+
+enum IdentityMethod {
+  BUSINESS
+  PASSPORT
+  RSA_ID
+}
+
+type IdentityType {
+  created_at: DateTime!
+  id: Int!
+  is_active: Int!
+  name: String!
+  process: String!
+  status: String!
+  updated_at: DateTime!
+}
+
+type Images {
+  type: String
+  base64: String
+}
+
+input InternationalAirtimeTopupInput {
+  amount: String!
+  phoneNumber: String!
+  network: String!
+  reference: String!
+  senderPhoneNumber: String!
+  productCode: String!
+}
+
+type InternationalAirtimeTopupResult {
+  success: Boolean!
+  message: String
+}
+
+input LookUpOrderInput {
+  orderRedeemRef: String!
+  userPin: String!
+  serialNumber: String!
+  deviceUUID: String!
+  devUserId: String!
+  requestId: String!
+  deviceId: String!
+  merchantEntityId: String!
+}
+
+type MSISDNValidationDataResult {
+  phoneNumber: String!
+  countryCode: String!
+  currencyCode: String!
+  exchangeRate: String!
+  ref: String!
+  date: String!
+  reference: String!
+  productList: [IAProduct]!
+  responseMessage: String!
+  status: String!
+}
+
+input MSISDNValidationInput {
+  phoneNumber: String!
+  reference: String!
+  network: String
+  iaAuth: IAAuth!
+  auth: BusAccount!
+}
+
+type MSISDNValidationResult {
+  success: Boolean!
+  message: String!
+  data: MSISDNValidationDataResult
+}
+
+input MerchantOrder {
+  product_code: String!
+  qty: Int!
+}
+
+input MerchantOrderInput {
+  order: [MerchantOrder!]!
+  appId: String!
+}
+
+type MerchantOrderResult {
+  success: Boolean!
+  message: String!
+}
+
+type MerchantToMerchantInfo {
+  TotalAmount: String
+  TransRef: String
+  ConvenienceFee: String
+  TransfereeAccount: String
+  TransfereeName: String
+}
+
+input MerchantToMerchantInput {
+  amount: String!
+  accountNo: String!
+  appId: String!
+}
+
+type MerchantToMerchantResult {
+  success: Boolean!
+  message: String!
+  accountInfo: MerchantToMerchantInfo
+}
+
+input MerchantToMerchantTransferInput {
+  accountNo: String!
+  amount: String!
+  cellNumber: String!
+  appId: String
+}
+
+type MerchantToMerchantTransferResult {
+  success: Boolean!
+  message: String!
+}
+
+type Mutation {
+  activateVoucher(input: ActivateVoucherInput!): ActivateVoucherResult
+  addDevice(input: AddDeviceInput!): AddDeviceResult
+  addNetworkContract(input: AddNetworkContractInput!): AddNetworkContractResult
+  addProductDeal(input: AddProductDealInput!): AddProductDealResult
+  agentRequest(input: AgentRequestInput!): AgentRequestResult
+  airtimeTopup(input: AirtimeTopupInput!): AirtimeTopupResult
+  allocateStock(input: AllocateStockInput!): AllocateStockResult
+  authRegistrationConsumer(
+    input: AccountRegisterConsumerInput!
+  ): AccountRegisterConsumerPayload
+  authRegistrationUser(
+    input: AccountRegisterUserInput!
+  ): AccountRegisterUserPayload
+  authResetPassword(input: AuthResetPasswordInput!): AuthResetPasswordPayload
+  authValidation(input: AuthValidationInput!): AuthValidationPayload
+  authValidationLegacy(
+    input: AuthValidationLegacyInput!
+  ): AuthValidationLegacyPayload
+  busTicketCancel(input: BusTicketCancelInput!): BusTicketCancelPayload
+  busTicketCancelConfirm(
+    input: BusTicketConfirmCancelInput!
+  ): BusTicketConfirmCancelPayload
+  busTicketCheckout(input: BusTicketCheckoutInput!): BusTicketCheckoutPayload
+  busTicketConfirm(input: BusTicketConfirmInput!): BusTicketConfirmPayload
+  busUpdateCustomer(input: BusUpdateCustomerInput!): BusUpdateCustomerPayload
+  checkStockInfo(input: CheckStockInfoInput!): CheckStockInfoResult!
+  checkVoucherInfo(input: CheckVoucherInfoInput!): CheckVoucherInfoResult!
+  confirmMeter(input: ConfirmMeterInput!): ConfirmMeterResult
+  consumerProfile(input: ConsumerProfileInput!): ConsumerProfileResult
+  customerOrder(input: CustomerOrderInput!): CustomerOrderResult
+  dataTopup(input: DataTopupInput!): DataTopupResult
+  electricityTopup(input: ElectricityTopupInput!): ElectricityTopupResult
+  fmcgPayment(input: FmcgPaymentInput!): FmcgPaymentResult!
+  getCustomer(input: BusGetCustomerInput!): BusGetCustomerPayload!
+  internationalAirtimeReprint(input: IAReprintInput!): IAReprintResult
+  internationalAirtimeTopup(
+    input: InternationalAirtimeTopupInput!
+  ): InternationalAirtimeTopupResult
+  internationalBundleTopup(input: IABundleTopupInput!): IABundleTopupResult
+  merchantOrder(input: MerchantOrderInput!): MerchantOrderResult
+  merchantToMerchantTransfer(
+    input: MerchantToMerchantTransferInput!
+  ): MerchantToMerchantTransferResult
+  msisdnValidation(input: MSISDNValidationInput!): MSISDNValidationResult
+  receiveStock(input: ReceiveStockInput!): ReceiveStockResult
+  receiveStockNew(input: ReceiveStockNewInput!): ReceiveStockNewResult
+  registerAgent(input: RegisterAgentInput!): RegisterAgentResult
+  registerConsumer(input: RegisterConsumerInput!): RegisterConsumerResult
+  registerConsumerByd(
+    input: RegisterConsumerBydInput!
+  ): RegisterConsumerBydResult
+  repTransfer(input: RepTransferInput!): RepTransferResult
+  ricaRegister(input: RicaRegisterInput!): RicaRegisterResult
+  sellStock(input: SellStockInput!): SellStockResult
+  setPrintedAndTender(
+    input: SetPrintedAndTenderInput!
+  ): SetPrintedAndTenderResult!
+  updateNetworkContract(
+    input: UpdateNetworkContractInput!
+  ): UpdateNetworkContractResult
+  uploadDocument(input: UploadDocumentInput!): UploadDocumentResult
+  uploadId(input: UploadImageInput!): UploadImageResult
+  uploadProofOfResidence(input: UploadImageInput!): UploadImageResult
+  uploadSelfie(input: UploadImageInput!): UploadImageResult
+  uploadSignature(input: UploadImageInput!): UploadImageResult!
+  validateBatch(input: ValidateProductInput!): ValidateProductResult!
+  verifyStockReceived(
+    input: VerifyStockReceivedInput!
+  ): VerifyStockReceivedResult
+  vodaPayConfirmRedeem(input: ConfirmRedeemInput!): String!
+  vodaPayLookup(input: LookUpOrderInput!): String!
+  vodaPayRedeem(input: RedeemOrderInput!): String!
+  vodaPayReverseRedeem(input: ReverseRedeemInput!): String!
+  voucherRedemption(input: VoucherRedemptionInput!): VoucherRedemptionPayload
+  vouchersTopUp(input: VouchersTopUpInput!): VouchersTopUpResult
+}
+
+type Network {
+  id: ID!
+  network: String!
+  colour: String!
+  logo: String!
+}
+
+type NetworkEdge {
+  node: Network!
+  cursor: String!
+}
+
+enum NetworkEnum {
+  MTN
+  CellC
+  TelkomMobile
+  Vodacom
+  CConnect
+}
+
+input NetworksInput {
+  type: String!
+}
+
+type NetworksResult {
+  success: Boolean!
+  message: String!
+  edges: [NetworkEdge!]
+  totalCount: Int!
+}
+
+interface Node {
+  id: ID!
+}
+
+type Order {
+  id: String!
+  orderId: Int!
+  statusName: String!
+  productCode: String!
+  productDescription: String!
+  qty: Int!
+}
+
+type PageInfo {
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+  startCursor: String
+  endCursor: String
+}
+
+type PaymentMethod {
+  created_at: String!
+  id: Int!
+  is_active: Int!
+  name: String!
+  process: String!
+  status: String!
+  updated_at: String!
+}
+
+enum Period {
+  MONTH
+  ONE
+  ONE_DAY
+  ONE_WEEK
+  THREE
+  THREE_DAY
+  WEEK
+}
+
+type Product {
+  product_id: Int!
+  code: String!
+  desc: String!
+  qty: Int!
+  networkId: Int
+}
+
+type ProductByEntity {
+  success: Boolean!
+  message: String!
+  edges: [ProductByEntityEdge!]
+  totalCount: Int!
+}
+
+type ProductByEntityEdge {
+  node: ProductsByEntity!
+  cursor: String!
+}
+
+input ProductByEntityInput {
+  appId: String!
+}
+
+type ProductByNetwork {
+  id: ID!
+  description: String!
+  productCode: String!
+  productId: Int!
+  costPrice: String
+  salePrice: String
+  actExpenseCode: String
+  ogrExpenseCode: String
+  simExpenseCode: String
+}
+
+type ProductDeal {
+  id: ID!
+  dealId: Int!
+  name: String!
+  isTiered: Boolean!
+  tierId: Int
+  ogr: Float!
+  act: Float!
+  sim: Float!
+  isSplit: Boolean!
+}
+
+input ProductDealInput {
+  productId: Int!
+  customerId: Int!
+  appId: String
+}
+
+type ProductDealList {
+  status: String!
+  edges: [ProductDealListEdge!]
+  totalCount: Int!
+}
+
+type ProductDealListEdge {
+  node: ProductDeal!
+  cursor: String!
+}
+
+input ProductTransfer {
+  product_id: String!
+  qty: String!
+}
+
+type Products {
+  product_id: Int!
+  code: String!
+  desc: String!
+  qty: Int!
+  networkId: Int
+  stockTypeId: Int
+  tradeValue: Float!
+  retailPrice: Float!
+}
+
+type ProductsByEntity {
+  id: ID!
+  description: String
+  manufacturer: String
+  productCode: String
+  retailPrice: Float
+  stockTypeId: Int
+  tradeValue: Float
+}
+
+type ProductsByNetworkEdge {
+  node: ProductByNetwork!
+  cursor: String!
+}
+
+input ProductsByNetworkInput {
+  network: NetworkEnum!
+  appId: String
+}
+
+type ProductsByNetworkResult {
+  success: Boolean!
+  message: String!
+  edges: [ProductsByNetworkEdge!]
+  totalCount: Int!
+}
+
+type ProductsList {
+  id: String!
+  description: String!
+  productCode: String!
+  productId: Int!
+  costPrice: String
+  salePrice: String
+}
+
+type ProductsListEdge {
+  node: ProductsList!
+  cursor: String!
+}
+
+type ProductsListResult {
+  success: Boolean!
+  message: String!
+  edges: [ProductsListEdge!]
+  totalCount: Int!
+}
+
+type Profile {
+  id: Int!
+  customerId: Int!
+  username: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+  identityReference: String!
+  cellNumber: String!
+  userType: Role!
+  devices: [DeviceType]
+  bydNo: String
+  ricaUsername: String
+  isRicaActive: Int
+}
+
+type Query {
+  account: Account!
+  accountBalance: AccountBalance!
+  accountNew(input: AccountNewInput!): AccountNew!
+  accountTransactions(input: AccountTransactionsInput!): AccountTransactions!
+  activationHistory(input: ActivationHistoryInput!): ActivationHistoryResult
+  bankDetails: BankDetails!
+  bankDetailsNew(input: BankDetailsNewInput!): BankDetailsNew!
+  bus_tickets(card_number: String!): User
+  carriers(input: BusAccount!): BusCarriersConnection!
+  commissions(input: CommissionsInput!): CommissionsConnection!
+  countries: [Country]
+  customerContracts(input: CustomerContractsInput!): CustomerContractsResult
+  customerList: CustomerList
+  customerListNew(input: CustomerListInput!): CustomerList!
+  dataBundles(input: DataBundlesInput!): DataBundlesResult!
+  dataBundlesNetwork(input: DataBundlesNetworkInput!): DataBundlesNetworkResult!
+  destinations(
+    companyId: ID!
+    departureLocationId: String!
+    auth: BusAccount
+  ): BusDestinationsConnection!
+  fares(input: BusFareInput): BusFaresConnection!
+  fetchBanners: BannersResult
+  fetchBannersNew(input: BannerNewInput!): BannersResult
+  fmcgDistributor(input: FmcgDistributorInput!): FmcgDistributorResult!
+  fmcgPrintTransactionHistory(
+    input: ReprintReceiptInput!
+    auth: BusAccount!
+  ): ReprintReceiptConnection!
+  fmcgSuppliers(input: FmcgSuppliersInput!): FmcgSuppliersResult!
+  fmcgTransactionHistory(
+    input: ReprintInput!
+    auth: BusAccount!
+  ): ReprintConnection!
+  getDevices: DevicesResult
+  identityTypes: [IdentityType]
+  merchantToMerchant(input: MerchantToMerchantInput!): MerchantToMerchantResult
+  networks(input: NetworksInput!): NetworksResult!
+  node(id: ID!): Node
+  passPricesLookUp(
+    input: BusPassPricesLookUpInput
+    auth: BusAccount!
+  ): BusPassPicesLookUpConnection!
+  passTypes(input: BusAccount!): BusPassTypesConnection!
+  passesLookUp(
+    input: BusPassesLookUpInput
+    auth: BusAccount!
+  ): BusPassesLookUpConnection!
+  paymentMethods: [PaymentMethod]
+  productByEntity(input: ProductByEntityInput!): ProductByEntity!
+  productDeals(input: ProductDealInput!): ProductDealList!
+  productsByNetwork(input: ProductsByNetworkInput!): ProductsByNetworkResult!
+  productsList: ProductsListResult!
+  profile: Profile
+  salesOrderList(input: SalesOrderListInput!): SalesOrderList!
+  stockList: StockList!
+  stockListNew(input: StockListNewInput!): StockListNew!
+  stockToReceive: StockReceiveList!
+  stockToReceiveNew(input: StockReceiveListNewInput!): StockReceiveListNew!
+  stops(input: BusStopsInput!): BusStopsConnection!
+  svcValidate(
+    svcValidation: SvcValidation
+    auth: BusAccount!
+  ): BusTicketsConnection!
+  ticketLookUp(
+    input: BusTicketLookUpInput
+    auth: BusAccount!
+  ): BusTicketLookUpConnection!
+  tickets(svcValidation: SvcValidation, auth: BusAccount!): BusTicketsConnection
+  transactions(input: TransactionsInput!): TransactionsConnection!
+  userPerformance(input: UserPerformanceInput!): UserPerformance!
+  validateBox(input: ValidateBoxInput!): ValidateBoxResult!
+  validateProduct(input: ValidateProductInput!): ValidateProductResult!
+  voucherList(input: VoucherListInput!): VoucherListResult!
+}
+
+input ReceiveStockInput {
+  productId: Int!
+  barcode: String!
+  orderId: Int!
+  appId: String
+}
+
+input ReceiveStockNewInput {
+  barcode: String!
+  appId: String
+}
+
+type ReceiveStockNewResult {
+  success: Boolean!
+  message: String!
+  repTransferId: Int
+  productCode: String
+  productName: String
+  transferQty: Int
+  receivedQty: Int
+  pendingQty: Int
+}
+
+type ReceiveStockResult {
+  success: Boolean!
+  message: String!
+  qty: Int
+  scannedQty: Int
+}
+
+input RedeemOrderInput {
+  merchantEntityId: String!
+  merchantName: String!
+  providerTrxId: String!
+  merchantTrxId: String!
+  amount: Int!
+  secretCode: Int!
+  orderRedeemRef: String!
+  userPin: String!
+  serialNumber: String!
+  deviceUUID: String!
+  devUserId: String!
+  requestId: String!
+  deviceId: String!
+}
+
+input RegisterAgentInput {
+  custCode: String!
+  base64image: String!
+  base64imageRep: String!
+  appId: String!
+}
+
+type RegisterAgentResult {
+  success: Boolean
+  message: String
+}
+
+input RegisterConsumerAddress {
+  line1: String!
+  line2: String
+  line3: String
+  code: Int!
+  city: String!
+  province: String!
+  latitude: Float
+  longitude: Float
+}
+
+input RegisterConsumerBydInput {
+  DeviceSerialNo: String!
+  appIds: String
+}
+
+type RegisterConsumerBydResult {
+  success: Boolean!
+  message: String!
+  status: String!
+  token: String
+}
+
+input RegisterConsumerInput {
+  username: String!
+  password: String!
+  name: String!
+  lastName: String!
+  mobile: String!
+  business: String!
+  email: String!
+  id: String!
+  idType: IdentityMethod
+  address: RegisterConsumerAddress!
+  appId: String
+  deviceSerialNo: String
+}
+
+type RegisterConsumerResult {
+  success: Boolean!
+  message: String
+  status: Int!
+  token: String
+}
+
+input RepTransferInput {
+  transfer: [ProductTransfer!]!
+  appId: String
+}
+
+type RepTransferResult {
+  success: Boolean!
+  message: String!
+}
+
+type Reprint {
+  id: ID
+  amount: Float
+  ref: String
+  type: String
+  date: DateTime
+}
+
+type ReprintConnection {
+  edges: [ReprintEdge!]
+  pageInfo: PageInfo
+  totalCount: Int
+}
+
+type ReprintEdge {
+  node: Reprint!
+  cursor: String
+}
+
+input ReprintInput {
+  startDate: DateTime!
+  endDate: DateTime!
+}
+
+type ReprintReceipt {
+  line: String
+}
+
+type ReprintReceiptConnection {
+  printLines: String
+}
+
+input ReprintReceiptInput {
+  transId: ID!
+  userReprint: Int!
+}
+
+enum ResetMethod {
+  EMAIL
+  SMS
+}
+
+type Response {
+  message: String!
+  code: Int!
+}
+
+input ReverseRedeemInput {
+  id: String!
+  merchantName: String!
+  merchantTrxId: String!
+  providerTrxId: String!
+  merchantEntityId: String!
+  amount: Int!
+  orderRedeemRef: String!
+  userPin: String!
+  serialNumber: String!
+  deviceUUID: String!
+  devUserId: String!
+  requestId: String!
+  deviceId: String!
+}
+
+input RicaRegisterInput {
+  simDetails: SimDetails!
+  isIndividual: Boolean!
+  identity: Identity!
+  customer: CustomerDetail!
+  appId: String
+}
+
+type RicaRegisterResult {
+  success: Boolean!
+  message: String
+}
+
+type Role {
+  id: Int!
+  description: String!
+  slug: String!
+}
+
+type RouteRecursor {
+  routes: [String]
+}
+
+type SalesOrderList {
+  success: Boolean!
+  message: String!
+  edges: [SalesOrderListEdge!]
+  totalCount: Int!
+}
+
+type SalesOrderListEdge {
+  node: Order!
+  cursor: String!
+}
+
+input SalesOrderListInput {
+  appId: String
+}
+
+input Sector {
+  sector: SvcBlock
+}
+
+input SellStockInput {
+  barcode: String!
+  appId: String
+}
+
+type SellStockResult {
+  success: Boolean!
+  message: String!
+}
+
+input SetPrintedAndTenderInput {
+  transRefs: [String!]!
+  tender: TenderAmounts!
+  userInfo: UserInfo!
+}
+
+type SetPrintedAndTenderResult {
+  success: Boolean!
+  message: String!
+  accounts: [TenderAccountResult!]
+}
+
+input SimDetails {
+  network: String!
+  simNumber: String!
+}
+
+type Stock {
+  id: String!
+  name: String!
+  network: String!
+  productCode: String!
+  productId: Int!
+  qty: Int!
+}
+
+type StockInfo {
+  barcode: String
+  productCode: String
+  qty: Int
+  invoiceDate: String
+  status: String
+  network: String
+  warehouse: String
+  custName: String
+  custCode: String
+  ricaStatus: String
+}
+
+type StockList {
+  success: Boolean!
+  message: String!
+  edges: [StockListEdge!]
+  totalCount: Int!
+}
+
+type StockListEdge {
+  node: Stock!
+  cursor: String!
+}
+
+type StockListNew {
+  success: Boolean!
+  message: String!
+  edges: [StockListNewEdge!]
+  totalCount: Int!
+}
+
+type StockListNewEdge {
+  node: Stock!
+  cursor: String!
+}
+
+input StockListNewInput {
+  appId: String
+}
+
+type StockReceive {
+  id: String!
+  name: String!
+  network: String!
+  orderId: Int!
+  productCode: String!
+  productId: Int!
+  qty: Int!
+  scannedQty: Int!
+}
+
+type StockReceiveList {
+  success: Boolean!
+  message: String!
+  edges: [StockReceiveListEdge!]
+  totalCount: Int!
+}
+
+type StockReceiveListEdge {
+  node: StockReceive!
+  cursor: String!
+}
+
+type StockReceiveListNew {
+  success: Boolean!
+  message: String!
+  edges: [StockReceiveListNewEdge!]
+  totalCount: Int!
+}
+
+type StockReceiveListNewEdge {
+  node: StockReceive!
+  cursor: String!
+}
+
+input StockReceiveListNewInput {
+  appId: String
+}
+
+input SvcBlock {
+  sector_no: String!
+  block0: String!
+  block1: String!
+  block2: String!
+}
+
+type SvcBlockOutput {
+  sector_no: String!
+  block0: String!
+  block1: String!
+  block2: String!
+}
+
+type SvcUpdate {
+  sectors: [SvcBlockOutput]!
+}
+
+input SvcValidation {
+  uid: String!
+  svcData: [Sector]!
+}
+
+type TenderAccountResult {
+  id: Int!
+  account: String!
+  balance: Float!
+  profit: Float!
+}
+
+input TenderAmounts {
+  cash: Float!
+  change: Float!
+  cheque: Float!
+  creditCard: Float!
+  debitCard: Float!
+  other: Float!
+}
+
+type Ticket {
+  price: Int
+  type: String
+  depature: String
+  destination: String
+}
+
+input TicketBus {
+  id: ID
+  sessionId: String!
+  responseCode: Int!
+  responseMessage: String!
+  companyId: Int!
+  ticketId: Int!
+  ticketNo: String!
+  ticketType: String!
+  routeId1: Int!
+  routeId2: Int!
+  routeCode1: String!
+  routeCode2: String!
+  fare: String!
+  fareProductId: String!
+  departureLocationId: String!
+  destinationLocationId: String!
+  activationDate: DateTime!
+  expiryDate: DateTime!
+  ticketDate: DateTime!
+  numberOfDaysTrips: Int!
+  numberOfTransfers: Int!
+  status: String!
+  rules: String!
+  fareCurrency: String!
+}
+
+type Transaction {
+  id: ID
+  amount: Float!
+  name: String!
+  description: String!
+}
+
+type TransactionEdge {
+  node: Transaction!
+  cursor: String
+}
+
+type Transactions {
+  id: String!
+  transactionId: Int!
+  timeStamp: String!
+  transactionDescription: String!
+  debitAmount: String!
+  creditAmount: String!
+  balance: String!
+}
+
+type TransactionsConnection {
+  totalAmount: Float!
+  edges: [TransactionEdge!]
+  pageInfo: PageInfo
+  totalCount: Int
+}
+
+input TransactionsInput {
+  period: Period!
+  appId: String
+}
+
+input UpdateNetworkContractInput {
+  customerId: Int!
+  network: NetworkEnum!
+  isTiered: Boolean
+  isSplit: Boolean
+  ogr: Float!
+  act: Float!
+  sim: Float!
+  appId: String
+}
+
+type UpdateNetworkContractResult {
+  success: Boolean!
+  message: String!
+}
+
+input UploadDocumentInput {
+  base64image: String!
+  type: String!
+  appId: String
+  customerId: Int!
+}
+
+type UploadDocumentResult {
+  success: Boolean!
+  message: String!
+}
+
+input UploadImageInput {
+  base64image: String!
+  appId: String
+}
+
+type UploadImageResult {
+  success: Boolean!
+  message: String!
+  status: Int!
+}
+
+type User {
+  message: String!
+  name: String!
+  ticket_count: Int
+  type: Card!
+  tickets: [Ticket!]
+}
+
+input UserInfo {
+  deviceId: String!
+  serial: String!
+  userPin: String!
+  location: String!
+  version: String!
+}
+
+type UserPerformance {
+  success: Boolean!
+  message: String!
+  totalActivations: Float
+  totalConnections: Float
+  totalStock: Float
+  totalTranfer: Float
+  totalSold: Float
+}
+
+input UserPerformanceInput {
+  type: String!
+  network: NetworkEnum!
+  customerId: Int!
+  date: String!
+  appId: String
+}
+
+input ValidateBoxInput {
+  barcode: String!
+  appId: String
+}
+
+type ValidateBoxResult {
+  success: Boolean!
+  message: String!
+  product: Products
+}
+
+input ValidateProductInput {
+  barcode: String!
+  appId: String
+}
+
+type ValidateProductResult {
+  success: Boolean!
+  message: String!
+  product: Product
+}
+
+input VerifyStockReceivedInput {
+  barcode: String!
+  appId: String
+}
+
+type VerifyStockReceivedResult {
+  success: Boolean!
+  message: String!
+}
+
+enum VoucherEnumType {
+  CASH
+  GOODS
+}
+
+type VoucherListEdge {
+  node: Vouchers!
+  cursor: String!
+}
+
+input VoucherListInput {
+  type: VoucherListInputTypes!
+  appId: String!
+}
+
+enum VoucherListInputTypes {
+  SupaBets
+  Hollywood
+  Ringas
+  BluVoucher
+}
+
+type VoucherListResult {
+  success: Boolean!
+  message: String!
+  edges: [VoucherListEdge!]
+  totalCount: Int!
+}
+
+input VoucherRedemptionInput {
+  username: String!
+  consumerIdNumber: String
+  requestId: String!
+  mobileNumber: String!
+  password: String!
+  voucherNumber: String!
+  transactionType: VoucherEnumType!
+  amount: Int!
+  clientMutationId: String
+}
+
+type VoucherRedemptionPayload {
+  requestId: String!
+  dateTime: DateTime
+  balance: Float
+  reference: String
+  clientMutationId: String
+}
+
+type Vouchers {
+  id: ID!
+  type: String!
+  name: String!
+  amount: String!
+  categoryId: String!
+  productId: Int!
+}
+
+input VouchersTopUpInput {
+  qty: Int!
+  productId: Int!
+  cellNumber: String!
+  voucherType: VouchersTopUpTypes!
+  appId: String
+}
+
+type VouchersTopUpResult {
+  success: Boolean!
+  message: String!
+}
+
+enum VouchersTopUpTypes {
+  SupaBets
+  Hollywood
+  Ringas
+  BluVoucher
+}

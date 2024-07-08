@@ -1,0 +1,8 @@
+type AccountBalance {
+    success: Boolean!
+    message: String!
+    balance: Float!
+    currentBalance:Float!
+    accountNo:Float!
+}
+

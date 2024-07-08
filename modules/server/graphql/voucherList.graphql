@@ -1,0 +1,31 @@
+enum VoucherListInputTypes{
+    SupaBets
+    Hollywood
+    Ringas
+    BluVoucher
+}
+input VoucherListInput {
+  type: VoucherListInputTypes!
+  appId: String!
+}
+
+type VoucherListResult {
+  success: Boolean!
+  message: String!
+  edges: [VoucherListEdge!]
+  totalCount: Int!
+}
+
+type VoucherListEdge {
+  node: Vouchers!
+  cursor: String!
+}
+
+type Vouchers{
+    id: ID!
+    type: String!
+    name: String!
+    amount: String!
+    categoryId: String!
+    productId:Int!
+}

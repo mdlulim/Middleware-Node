@@ -1,0 +1,24 @@
+input CustomerOrderInput {
+  order: [CustomerOrder!]!
+  customerId: Int!
+  delivery: DeliveryEnum!
+  appId:String
+}
+
+enum DeliveryEnum {
+    Courier,
+    Delivery,
+    Collection,
+}
+
+input CustomerOrder {
+    productId: Int!
+    qty: Int!
+    dealId: Int!
+    salePrice: Float!
+}
+
+type CustomerOrderResult {
+  success: Boolean!
+  message: String!
+}

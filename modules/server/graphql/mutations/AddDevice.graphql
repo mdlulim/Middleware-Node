@@ -1,0 +1,9 @@
+input AddDeviceInput {
+  serialNo: String!
+  appId:String
+}
+
+type AddDeviceResult {
+  success: Boolean!
+  message: String!
+ }

@@ -1,0 +1,14 @@
+input AddProductDealInput {
+  productId: Int!
+  customerId: Int!
+  name: String!
+  ogr: Float!
+  act: Float!
+  sim: Float!
+  appId:String
+}
+
+type AddProductDealResult {
+  success: Boolean!
+  message: String!
+}

@@ -1,0 +1,26 @@
+input  AccountTransactionsInput {
+ startDate:String!
+ endDate:String!
+}
+
+type AccountTransactions{
+   success: Boolean!
+  message: String!
+  edges: [AccountTransactionsEdge!]
+  totalCount: Int!
+}
+
+type AccountTransactionsEdge {
+  node: Transactions!
+  cursor: String!
+}
+
+type Transactions {
+  id: String!
+  transactionId: Int!
+  timeStamp: String!
+  transactionDescription: String!
+  debitAmount: String!
+  creditAmount: String!
+  balance: String!
+}

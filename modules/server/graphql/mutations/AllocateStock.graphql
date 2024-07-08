@@ -1,0 +1,25 @@
+input AllocateStockInput {
+  stock: [AllocateStock!]!
+  customer_id: Int!
+  delivery: DeliveryEnum!
+  appId:String
+}
+
+enum DeliveryEnum {
+    Courier,
+    Delivery,
+    Collection,
+}
+
+input AllocateStock {
+    product_id: Int!
+    qty: Int!
+    deal_id: Int!
+    sale_price: Float!
+    barcode: [String!]!
+}
+
+type AllocateStockResult {
+  success: Boolean!
+  message: String!
+}

@@ -1,0 +1,19 @@
+input CheckVoucherInfoInput {
+  barcode: String!
+  appId: String
+}
+
+type CheckVoucherInfoResult {
+  success: Boolean!
+  message: String!
+  product: Details
+}
+
+type Details {
+  barcode: String
+  pod: String
+  productCode: String
+  qty: Int
+  status: String
+ }
+

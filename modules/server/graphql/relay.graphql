@@ -1,0 +1,18 @@
+interface Node {
+  id: ID!
+}
+
+# Dummy type to fix schema
+type DummyNode implements Node {
+  id: ID!
+}
+
+type PageInfo {
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+  startCursor: String
+  endCursor: String
+}
+
+# scalar RelayIdVendor
+# scalar RelayIdBeneficiary

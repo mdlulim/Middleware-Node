@@ -1,0 +1,54 @@
+type BusTicketLookUpConnection {
+    passEdges: [BusPassEdge!]
+    locationEdges: [BusLocationEdge!]
+    availableFrom: DateTime
+    availableTo: DateTime
+    ticketId: ID
+    ticketNumber: String
+    transferValidityPeriodMinutes: String
+    noOfTransfers: Int
+    passCount: Int
+    locationCount: Int
+    success: Boolean!
+    message: String!
+    status: String!
+}
+
+type BusLocationEdge {
+    node: BusLocation!
+    cursor: String
+}
+
+type BusPassEdge {
+    node: BusPass!
+    cursor: String
+}
+
+type BusLocation {
+    category: String
+    locationId: String
+    name: String
+    transfersAllowed: Int
+}
+
+type BusPass {
+    activationRule: String
+    companyId: ID
+    name: String
+    passId: String
+    passType: String
+    passValue: String
+    period: String
+    price: String
+    tripsPerDay: Int
+    weekdays: String
+}
+
+
+input BusTicketLookUpInput {
+    companyId: String
+    departureLocationId: ID
+    destinationLocationId: ID
+    passType: String
+    passId: String
+}

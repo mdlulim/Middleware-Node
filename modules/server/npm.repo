@@ -1,0 +1,14 @@
+[Base]
+name=CentOS-$releasever - Base
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=AppStream&infra=$infra
+baseurl=http://nexus.qa.bltelecoms.net/repository/NPM/
+#baseUrl=https://pkgs.dev.azure.com/BlueLabelTelecom/_packaging/npm-feed/npm/registry/
+#baseurl=http://mirror.centos.org/$contentdir/$releasever/AppStream/$basearch/os/
+gpgcheck=0
+enabled=1
+#gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+repo_gpgcheck=0
+timeout=300
+proxy=_none_
+sslverify=false
+

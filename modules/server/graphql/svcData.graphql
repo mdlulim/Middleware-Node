@@ -1,0 +1,30 @@
+input SvcValidation {
+    uid: String!
+    svcData: [Sector]!
+}
+
+input Sector {
+    sector: SvcBlock
+}
+
+input SvcBlock {
+    sector_no: String!
+    block0: String!
+    block1: String!
+    block2: String!
+}
+
+type SvcUpdate {
+#    sector10: SvcBlockOutput!
+#    sector11: SvcBlockOutput!
+#    sector12: SvcBlockOutput!
+#    sector13: SvcBlockOutput!
+    sectors: [SvcBlockOutput]!
+}
+
+type SvcBlockOutput{
+    sector_no: String!
+    block0: String!
+    block1: String!
+    block2: String!
+}

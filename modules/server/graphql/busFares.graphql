@@ -1,0 +1,45 @@
+type BusFaresConnection {
+    totalAmount: Int
+    edges: [BusFaresEdge!]
+    pageInfo: PageInfo
+    totalCount: Int
+    status: Int
+    sessionId: String
+    responseCode: Int
+    responseMessage: String
+}
+
+type BusFaresEdge {
+    node: BusFare!
+    cursor: String
+}
+
+type BusFare {
+    id: ID
+    period: String!
+    fareProductId: String!
+    code: String!
+    routes: RouteRecursor!
+    companyId: ID!
+    weekdays: String!
+    created: DateTime!
+    availableFrom: DateTime!
+    availableTo: DateTime!
+    transferCount: Int!
+    passValue: Int!
+    tripsPerDay: Int!
+    passType: String!
+    price: String!
+    name: String!
+    shortName: String!
+    desc: String
+}
+
+input BusFareInput {
+    companyId: String!
+    departureLocationId: ID
+    destinationLocationId: ID
+    routeId: Int
+    fareProductId: ID
+    auth: BusAccount
+}

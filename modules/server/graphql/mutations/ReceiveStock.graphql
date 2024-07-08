@@ -1,0 +1,13 @@
+input ReceiveStockInput {
+  productId: Int!
+  barcode: String!
+  orderId: Int!
+  appId:String
+}
+
+type ReceiveStockResult {
+  success: Boolean!
+  message: String!
+  qty: Int
+  scannedQty: Int
+}

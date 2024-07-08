@@ -1,0 +1,19 @@
+input ValidateProductInput {
+  barcode: String!
+  appId: String
+}
+
+type ValidateProductResult {
+  success: Boolean!
+  message: String!
+  product: Product
+}
+
+type Product {
+  product_id: Int!
+  code: String!
+  desc: String!
+  qty: Int!
+  networkId: Int
+}
+

@@ -1,0 +1,15 @@
+input MerchantOrderInput {
+  order: [MerchantOrder!]!
+  appId:String!
+}
+
+input MerchantOrder {
+    product_code: String!
+    qty: Int!
+ }
+
+type MerchantOrderResult {
+  success: Boolean!
+  message: String!
+
+}

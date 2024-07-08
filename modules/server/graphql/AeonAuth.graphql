@@ -1,0 +1,17 @@
+#input AuthValidationInput {
+#  username: String!
+#  password: String!
+#  clientMutationId: String
+#}
+
+type AeonAuth {
+  authorized: Boolean!
+  clientMutationId: String
+  success: Boolean!
+}
+
+type AeonResult {
+  success: Boolean!
+  message: String
+  response: String
+}

@@ -1,0 +1,29 @@
+input TransactionsInput {
+  period: Period!
+  appId: String
+}
+
+type TransactionsConnection {
+    totalAmount: Float!
+    edges: [TransactionEdge!]
+    pageInfo: PageInfo
+    totalCount: Int
+}
+type TransactionEdge {
+    node: Transaction!
+    cursor: String
+}
+
+type Transaction {
+    id: ID
+    amount: Float!
+    name: String!
+    description: String!
+}
+
+enum Period {
+    ONE_DAY
+    THREE_DAY
+    ONE_WEEK
+    MONTH
+}

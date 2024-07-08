@@ -1,0 +1,104 @@
+---
+image: registry.apps.k8s-01.prod.bluelabel.co.za/lsdautomate/base-images/nodejs:1.3.0
+
+variables:
+  SONAR_OPTS: "-Dsonar.projectKey=$CI_PROJECT_NAME -Dsonar.language=js -Dsonar.exclusions=node_modules/*,modules/server/node_modules/*,src/**/*.spec.js -Dsonar.coverage.exclusions=src/**/*.spec.js,src/**/*.mock.js,node_modules/*,coverage/lcov-report/* -Dsonar.login=$DIGITAL_MOBILE_SONAR_TOKEN"
+
+stages:
+  - build
+  - e2e
+  - analysis
+  - container
+  - deploy
+
+cache: &global_cache
+  key: $CI_PROJECT_ID
+  paths:
+    - node_modules
+    - "modules/*/node_modules"
+  policy: pull-push
+
+build:
+  stage: build
+  before_script:
+    - chmod +x ./scripts/nexus-proxy.sh
+    - ./scripts/nexus-proxy.sh
+    - yarn install --frozen-lockfile
+  script:
+    - make
+  artifacts:
+    paths:
+      - modules/server/build/
+      - yarn.lock
+
+e2e:
+  stage: e2e
+  cache:
+    <<: *global_cache
+    policy: pull
+  script:
+    - ./scripts/e2e.sh
+  dependencies:
+    - build
+
+analysis:                                                             
+  stage: analysis
+  cache:
+    <<: *global_cache
+    policy: pull
+  image: registry.apps.k8s-01.prod.bluelabel.co.za/lsdautomate/base-images/sonarscanner:1.0.0                                                              
+  script:
+    - sonar-scanner $SONAR_OPTS
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      when: manual
+      allow_failure: true
+
+container:                                                                          
+  stage: container
+  cache:
+    <<: *global_cache
+    policy: pull
+  image: 
+    name: registry.apps.k8s-01.prod.bluelabel.co.za/lsdautomate/base-images/image-builder:v1.5.2
+    entrypoint: [""]
+  variables:
+    LABELS: >
+      --label com.gitlab.ci.user=$CI_SERVER_URL/$GITLAB_USER_LOGIN
+      --label com.gitlab.ci.email=$GITLAB_USER_EMAIL
+      --label com.gitlab.ci.tagorbranch=$CI_COMMIT_REF_NAME
+      --label com.gitlab.ci.pipelineurl=$CI_PIPELINE_URL
+      --label com.gitlab.ci.commiturl=$CI_PROJECT_URL/commit/$CI_COMMIT_SHA
+      --label com.gitlab.ci.cijoburl=$CI_JOB_URL
+      --label com.gitlab.ci.cijobid=$CI_JOB_ID
+      --label com.gitlab.ci.mrurl=$CI_PROJECT_URL/-/merge_requests/$CI_MERGE_REQUEST_ID
+    BUILD_ARGS: >
+      --build-arg=NPM_TOKEN=$NPM_TOKEN
+      --build-arg=HTTP_PROXY=$HTTP_PROXY
+      --build-arg=HTTPS_PROXY=$HTTPS_PROXY
+      --build-arg=NO_PROXY=$NO_PROXY
+    CACHE_PARAMS: "--cache=true --cache-copy-layers=true --cache-ttl=24h"
+  script:
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/modules/server/Dockerfile --destination $CI_REGISTRY_IMAGE/server:$CI_COMMIT_REF_NAME --destination $CI_REGISTRY_IMAGE/server:$CI_COMMIT_SHA $CACHE_PARAMS $BUILD_ARGS $LABELS
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+    - if: '$CI_COMMIT_BRANCH == "development"'
+    - if: '$CI_COMMIT_TAG =~ /^v\d+.\d+.\d+/'
+  dependencies:
+    - build
+    - e2e
+
+deploy:dev:                                                                          
+  stage: deploy
+  cache: {}
+  image: registry.apps.k8s-01.prod.bluelabel.co.za/lsdautomate/base-images/awx-deployer:1.0.1-awx-update
+  before_script:
+    - export TOWER_HOST="$DIGITAL_MOBILE_TOWER_HOST"
+    - export TOWER_OAUTH_TOKEN="$DIGITAL_MOBILE_DEV_TOWER_OAUTH_TOKEN"
+  script:
+    - awx job_templates launch "mobile-middleware-deploy-development" --extra_vars "{ \"image_name\":\"server\", \"image_path\":\"digital-mobile/mobile-middleware\", \"image_registry\":\"$CI_REGISTRY\", \"image_tag\":\"$CI_COMMIT_REF_NAME\"  }" --monitor -f human
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "development"'
+      when: manual
+  dependencies:
+    - container

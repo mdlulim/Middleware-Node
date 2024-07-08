@@ -1,0 +1,16 @@
+input AddNetworkContractInput {
+  name: String!
+  customerId: Int!
+  network: NetworkEnum!
+  isTiered: Boolean
+  isSplit: Boolean
+  ogr: Float!
+  act: Float!
+  sim: Float!
+  appId:String
+}
+
+type AddNetworkContractResult {
+  success: Boolean!
+  message: String!
+}

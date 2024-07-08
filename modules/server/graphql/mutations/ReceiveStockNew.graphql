@@ -1,0 +1,15 @@
+input ReceiveStockNewInput {
+  barcode: String!
+  appId:String
+}
+
+type ReceiveStockNewResult {
+  success: Boolean!
+  message: String!
+  repTransferId: Int
+  productCode: String
+  productName: String
+  transferQty: Int
+  receivedQty: Int
+  pendingQty: Int
+}

@@ -1,0 +1,24 @@
+type BusGetCustomerPayload {
+    success: Boolean!
+    message: String!
+    customerInfo: BusCustomerInfo!
+    pageNumber: Int
+    totalPages: Int
+    maxRecordsPerPage: Int
+    recordsFetched: Int
+}
+
+type BusCustomerInfo {
+    uid: ID
+    name: String
+    surname: String
+    cellNumber: String
+    status: String
+    issueDate: String
+    expiry: String
+}
+
+input BusGetCustomerInput {
+    uid: String!
+    auth: BusAccount!
+}

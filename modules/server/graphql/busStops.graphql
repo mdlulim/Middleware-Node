@@ -1,0 +1,20 @@
+type BusStopsConnection {
+    edges: [BusStopsEdge!]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type BusStopsEdge {
+    node: BusStopLocation!
+    cursor: String
+}
+
+type BusStopLocation {
+    id: ID
+    name: String!
+}
+
+input BusStopsInput {
+    companyId: ID!
+    auth: BusAccount!
+}

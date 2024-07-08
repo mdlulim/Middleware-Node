@@ -1,0 +1,23 @@
+input VoucherRedemptionInput {
+  username: String!
+  consumerIdNumber: String
+  requestId: String!
+  mobileNumber: String!
+  password: String!
+  voucherNumber: String!
+  transactionType: VoucherEnumType!
+  amount: Int!
+  clientMutationId: String
+}
+
+type VoucherRedemptionPayload {
+  requestId: String!
+  dateTime: DateTime
+  balance: Float
+  reference: String
+  clientMutationId: String
+}
+
+type Mutation {
+  voucherRedemption(input: VoucherRedemptionInput!): VoucherRedemptionPayload
+}

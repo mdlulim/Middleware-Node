@@ -1,0 +1,34 @@
+overwrite: true
+schema: 'graphql/**/*.graphql'
+# documents: 'graphql/**/*.graphql'
+generates:
+  src/generated/graphql.ts:
+    config:
+      contextType: ../Context#Context
+      useIndexSignature: true
+      noSchemaStitching: true
+      avoidOptionals: true
+      scalars:
+        DateTime: Date
+      mappers:
+        # Viewer: ../types#ViewerModel
+        # TODO: add back when pagination is added
+        # PageInfo: ../types#PageInfoModel
+    plugins:
+      # - '../graphql-code-plugin-relay/build/index.js'
+      - 'typescript'
+      - 'typescript-resolvers'
+      - add: 
+          content: /* eslint-disable @typescript-eslint/no-explicit-any */
+  ./schema.graphql:
+    plugins:
+      - schema-ast
+    config:
+      includeDirectives: true
+  ./graphql.schema.json:
+    plugins:
+      - 'introspection'
+# TODO add custom scalars - https://graphql-code-generator.com/docs/plugins/typescript-resolvers#scalars-scalarsmap
+hooks:
+  afterAllFileWrite:
+    - prettier --write

@@ -1,0 +1,15 @@
+input UpdateNetworkContractInput {
+  customerId: Int!
+  network: NetworkEnum!
+  isTiered: Boolean
+  isSplit: Boolean
+  ogr: Float!
+  act: Float!
+  sim: Float!
+  appId:String
+}
+
+type UpdateNetworkContractResult {
+  success: Boolean!
+  message: String!
+}

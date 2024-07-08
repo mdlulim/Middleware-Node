@@ -1,0 +1,23 @@
+type Query {
+  bus_tickets(card_number: String!): User
+}
+
+type Ticket {
+  price: Int
+  type: String
+  depature: String
+  destination: String
+}
+
+type Card {
+  type: String!
+  card_number: String!
+}
+
+type User {
+  message: String!
+  name: String!
+  ticket_count: Int
+  type: Card!
+  tickets: [Ticket!]
+}

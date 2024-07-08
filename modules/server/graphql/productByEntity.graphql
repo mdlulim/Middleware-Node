@@ -1,0 +1,27 @@
+input ProductByEntityInput{
+    appId:String!
+}
+
+type ProductByEntity {
+  success: Boolean!
+  message: String!
+  edges: [ProductByEntityEdge!]
+  totalCount: Int!
+}
+
+type ProductByEntityEdge {
+  node: ProductsByEntity!
+  cursor: String!
+}
+
+type ProductsByEntity {
+    id: ID!
+    description: String
+    manufacturer: String
+    productCode: String
+    retailPrice: Float
+    stockTypeId: Int
+    tradeValue: Float
+
+}
+

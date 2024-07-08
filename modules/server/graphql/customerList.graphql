@@ -1,0 +1,16 @@
+type CustomerList {
+  edges: [CustomerListEdge!]
+  totalCount: Int!
+}
+
+type CustomerListEdge {
+  node: Customer!
+  cursor: String!
+}
+
+type Customer {
+  id: ID!
+  name: String!
+  customerCode: String!
+  customerId: Int!
+}

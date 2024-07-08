@@ -1,0 +1,165 @@
+input IAAuth {
+    deviceId: String!
+    transType: String!
+    userPin: String!
+    deviceSer: String!
+    deviceUUID:String
+    reference: String
+}
+
+input MSISDNValidationInput {
+    phoneNumber: String!
+    reference: String!
+    network: String
+    iaAuth: IAAuth!
+    auth: BusAccount!
+}
+
+type MSISDNValidationResult {
+      success: Boolean!
+      message: String!
+      data: MSISDNValidationDataResult
+}
+
+type MSISDNValidationDataResult {
+    phoneNumber: String!
+    countryCode: String!
+    currencyCode: String!
+    exchangeRate: String!
+    ref: String!
+    date: String!
+    reference: String!
+    productList: [IAProduct]!
+    responseMessage: String!
+    status: String!
+}
+
+type IAProduct {
+    type: String!
+    network: String!
+    description: String!
+    amount: String!
+    productCode: String!
+    top5Seller: String!
+}
+
+input IATopupInput {
+    phoneNumber: String!
+    amount: String!
+    senderPhoneNumber: String!
+    productCode: String!
+    recon: IAReconInput
+    iaAuth: IAAuth!
+    auth: BusAccount!
+    network: String!
+}
+
+input IAReconInput {
+    batchNumber: String!
+    terminalId: String!
+    merchantId: String!
+    transNumber: String!
+    transReference: String!
+    sysReference: String!
+    transDateTime: String!
+    businessDate: String!
+    transType: String!
+    accountNumber: String!
+    productId: String!
+    amount: String!
+    authoriser: String!
+    productName: String!
+    auth: BusAccount!
+}
+
+type IARecon {
+    batchNumber: String!
+    terminalId: String!
+    merchantId: String!
+    transNumber: String!
+    transReference: String!
+    sysReference: String!
+    transDateTime: String!
+    businessDate: String!
+    transType: String!
+    accountNumber: String!
+    productId: String!
+    amount: String!
+    authoriser: String!
+    productName: String!
+}
+
+type IATopupResult {
+    transRef: String!
+    supplierName: String!
+    phoneNumber: String!
+    tenderAmount: String!
+    tenderVat: String!
+    receiveAmount: String!
+    ref: String!
+    date: String!
+    productCode: String!
+    reference: String!
+    CallCenter: String
+    printLines: String!
+    merchantPrintLines: String!
+    Recon: IARecon
+}
+
+input IABundleTopupInput {
+    auth: BusAccount!
+    iaAuth: IAAuth!
+    transType: String!
+    phoneNumber: String!
+    amount: String!
+    senderPhoneNumber: String!
+    productCode: String!
+    recon: IAReconInput
+    network: String!
+}
+
+type IABundleTopupResult {
+    success: Boolean!
+    message: String!
+    data: IABundleTopupDataResult
+}
+
+type IABundleTopupDataResult {
+    transRef: String!
+    supplierName: String!
+    phoneNumber: String!
+    tenderAmount: String!
+    tenderVat: String!
+    receiveAmount: String!
+    ref: String!
+    date: String!
+    reference: String!
+    productCode: String!
+    callCenter: String
+    printLines: String!
+    merchantPrintLines: String!
+    recon: IARecon
+}
+
+input IAReprintInput {
+    transRef: String!
+    origReference: String!
+    phoneNumber: String!
+    iaAuth: IAAuth!
+    auth: BusAccount!
+}
+
+type IAReprintResult {
+    transRef: String!
+    origReference: String!
+    phoneNumber: String!
+    tenderAmount: String!
+    tenderVat: String!
+    receiveAmount: String!
+    date: String!
+    reference: String!
+    callCenter: String
+    printLines: String!
+    merchantPrintLines: String!
+    recon: IARecon
+}

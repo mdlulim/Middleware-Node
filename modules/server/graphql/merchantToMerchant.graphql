@@ -1,0 +1,22 @@
+
+input MerchantToMerchantInput{
+  amount:String!
+  accountNo:String!
+  appId:String!
+}
+
+type MerchantToMerchantResult{
+     success: Boolean!
+     message: String!
+     accountInfo: MerchantToMerchantInfo
+}
+
+type MerchantToMerchantInfo{
+  TotalAmount: String
+  TransRef: String
+  ConvenienceFee: String
+  TransfereeAccount: String
+  TransfereeName: String
+
+}
+

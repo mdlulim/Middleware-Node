@@ -1,0 +1,23 @@
+type Reprint {
+    id: ID
+    amount: Float
+    ref: String
+    type: String
+    date: DateTime
+}
+
+type ReprintEdge {
+    node: Reprint!
+    cursor: String
+}
+
+type ReprintConnection {
+    edges: [ReprintEdge!]
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+input ReprintInput {
+    startDate: DateTime!
+    endDate: DateTime!
+}

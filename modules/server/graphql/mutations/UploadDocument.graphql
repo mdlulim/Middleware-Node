@@ -1,0 +1,11 @@
+input UploadDocumentInput {
+  base64image: String!
+  type: String!
+  appId:String
+  customerId:Int!
+}
+
+type UploadDocumentResult {
+  success: Boolean!
+  message: String!
+}

@@ -1,0 +1,18 @@
+input ConfirmMeterInput {
+  meterNumber: String!
+  appId:String
+}
+
+type ConfirmMeterResult {
+  success: Boolean!
+  message: String!
+  detail: ConfirmMeterDetail
+}
+
+type ConfirmMeterDetail{
+  transRef: String!
+  customer: String!
+  address: String!
+  utility: String!
+  trxTypeId: Int!
+}

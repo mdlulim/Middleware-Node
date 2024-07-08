@@ -1,0 +1,46 @@
+input BusTicketCheckoutInput {
+  uid: String!
+  ticketType: String!
+  referenceId: String!
+  passId: String!
+  amount: String!
+  companyId: String!
+  svcData: [Sector]!
+  auth: BusAccount!
+}
+
+type BusTicketCheckoutPayload {
+  svcData: SvcUpdate
+  ticket:BusTicket
+  transaction: Transaction
+  transref: String
+  message: String
+  success: Boolean!
+}
+
+input BusTicketConfirmInput {
+  transref: String!
+  uid: String!
+  status: String!
+  ticketId: String!
+  transactionId: String!
+  amount: String!
+  paymentType: String!
+  companyId: String!
+  svcData: [Sector]!
+  auth: BusAccount!
+}
+
+type BusTicketConfirmPayload {
+  message: String
+  success: Boolean!
+  status: String
+  svcData: SvcUpdate
+  ticket:BusTicket
+  transaction: Transaction
+  transref: String
+  printLines: String
+  merchantPrintLines: String
+}
+
+

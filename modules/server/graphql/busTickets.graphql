@@ -1,0 +1,59 @@
+type BusTicketsConnection {
+    message: String!
+    success: Boolean!
+    edges: [BusTicketsEdge!]
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type BusTicketsEdge {
+    node: BusTicket!
+    cursor: String
+}
+
+type BusTicket {
+    id: ID
+    sessionId: String
+    responseCode: Int
+    responseMessage: String
+    companyId: Int
+    ticketId: Int
+    ticketNo: String
+    ticketType: String
+    ticketSaleId: Int
+    passId: Int
+    routes: RouteRecursor
+    fare: String
+    fareProductId: String
+    departureLocationId: String
+    destinationLocationId: String
+    activationDate: DateTime
+    expiryDate: DateTime
+    ticketDate: DateTime
+    numberOfDaysTrips: Int
+    numberOfTransfers: Int
+    status: String
+    rules: String
+    fareCurrency: String
+    locations: [BusTicketLocation]
+}
+
+type BusTicketLocation {
+    location_id: String
+    location_name: String
+    transfer_allowed: Int
+}
+
+input BusTicketInput {
+    uid: String!
+    ticketId: String
+}
+
+type RouteRecursor {
+    routes: [String]
+}
+
+#type Route {
+#    id: String!
+#    code: String!
+#}

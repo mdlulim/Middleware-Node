@@ -1,0 +1,9 @@
+input SellStockInput {
+  barcode: String!
+  appId:String
+}
+
+type SellStockResult {
+  success: Boolean!
+  message: String!
+}

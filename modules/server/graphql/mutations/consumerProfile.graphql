@@ -1,0 +1,29 @@
+
+input ConsumerProfileInput {
+     appId: String!
+     custCode: String!
+}
+type ConsumerProfileResult {
+  success: Boolean!
+  message: String!
+    customerId: Int
+    username: String
+    names: String
+    email: String
+    identity_reference:String
+    cellNumber:String
+    address_line_1: String
+    address_line_2: String
+    city: String
+    postal_code: String
+    province: String
+    user_type: String
+    customer_status: String
+    payment_method: String
+    identity_type: String
+    images: [Images]
+}
+type Images {
+    type: String
+    base64: String
+}

@@ -1,0 +1,23 @@
+type BusCarriersConnection {
+    companiesEdges: [BusCarriersEdge!]!
+    passTypesEdges: [BusPassTypeEdge!]!
+    pageInfo: PageInfo
+    companiesCount: Int
+    passTypesCount: Int
+    success: Boolean!
+    message: String!
+    status: String!
+}
+
+type BusCarriersEdge {
+    node: BusCarrierLocation!
+    cursor: String
+}
+
+type BusCarrierLocation {
+    name: String
+    shortName: String
+    companyId: String
+    role: String
+    type: String
+}

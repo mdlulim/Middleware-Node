@@ -1,0 +1,22 @@
+input NetworksInput {
+  type: String!
+}
+
+type NetworksResult {
+  success: Boolean!
+  message: String!
+  edges: [NetworkEdge!]
+  totalCount: Int!
+}
+
+type NetworkEdge {
+  node: Network!
+  cursor: String!
+}
+
+type Network {
+    id: ID!
+    network: String!
+    colour: String!
+    logo: String!
+}

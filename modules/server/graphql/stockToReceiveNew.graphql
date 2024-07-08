@@ -1,0 +1,27 @@
+input StockReceiveListNewInput{
+  appId: String
+}
+
+
+type StockReceiveListNew {
+  success: Boolean!
+  message: String!
+  edges: [StockReceiveListNewEdge!]
+  totalCount: Int!
+}
+
+type StockReceiveListNewEdge {
+  node: StockReceive!
+  cursor: String!
+}
+
+type StockReceive {
+  id: String!
+  orderId: Int!
+  productId: Int!
+  name: String!
+  productCode: String!
+  network: String!
+  qty: Int!
+  scannedQty: Int!
+}
